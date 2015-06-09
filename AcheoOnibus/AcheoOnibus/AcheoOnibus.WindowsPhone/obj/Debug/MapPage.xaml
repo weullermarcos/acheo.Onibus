@@ -1,0 +1,18 @@
+﻿<Page
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:AcheoOnibus"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:Maps="using:Windows.UI.Xaml.Controls.Maps"
+    x:Class="AcheoOnibus.MapPage"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid>
+
+        <Maps:MapControl x:Name="mapFindBus" HorizontalAlignment="Left" MapServiceToken="DwsAe3fYVyZvelstJ_v5Bg" Margin="10,10,0,0" VerticalAlignment="Top" Width="380" Height="620"/>
+
+    </Grid>
+</Page>
+

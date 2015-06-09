@@ -1,0 +1,77 @@
+c:\users\ismael.felix\documents\visual studio 2013\Projects\AcheoOnibus\AcheoOnibus\AcheoOnibus.WindowsPhone\bin\Debug\App.xbf
+c:\users\ismael.felix\documents\visual studio 2013\Projects\AcheoOnibus\AcheoOnibus\AcheoOnibus.WindowsPhone\bin\Debug\MainPage.xbf
+c:\users\ismael.felix\documents\visual studio 2013\Projects\AcheoOnibus\AcheoOnibus\AcheoOnibus.WindowsPhone\bin\Debug\AcheoOnibus.WindowsPhone.xr.xml
+c:\users\ismael.felix\documents\visual studio 2013\Projects\AcheoOnibus\AcheoOnibus\AcheoOnibus.WindowsPhone\bin\Debug\AcheoOnibus.WindowsPhone.exe
+c:\users\ismael.felix\documents\visual studio 2013\Projects\AcheoOnibus\AcheoOnibus\AcheoOnibus.WindowsPhone\bin\Debug\AcheoOnibus.WindowsPhone.pdb
+c:\users\ismael.felix\documents\visual studio 2013\Projects\AcheoOnibus\AcheoOnibus\AcheoOnibus.WindowsPhone\bin\Debug\resources.pri
+c:\users\ismael.felix\documents\visual studio 2013\Projects\AcheoOnibus\AcheoOnibus\AcheoOnibus.WindowsPhone\bin\Debug\AppxManifest.xml
+c:\users\ismael.felix\documents\visual studio 2013\Projects\AcheoOnibus\AcheoOnibus\AcheoOnibus.WindowsPhone\bin\Debug\AcheoOnibus.WindowsPhone.build.appxrecipe
+c:\users\ismael.felix\documents\visual studio 2013\Projects\AcheoOnibus\AcheoOnibus\AcheoOnibus.WindowsPhone\bin\Debug\Newtonsoft.Json.dll
+c:\users\ismael.felix\documents\visual studio 2013\Projects\AcheoOnibus\AcheoOnibus\AcheoOnibus.WindowsPhone\bin\Debug\Newtonsoft.Json.xml
+c:\users\ismael.felix\documents\visual studio 2013\Projects\AcheoOnibus\AcheoOnibus\AcheoOnibus.WindowsPhone\obj\Debug\AcheoOnibus.WindowsPhone.csprojResolveAssemblyReference.cache
+c:\users\ismael.felix\documents\visual studio 2013\Projects\AcheoOnibus\AcheoOnibus\AcheoOnibus.WindowsPhone\obj\Debug\App.g.i.cs
+c:\users\ismael.felix\documents\visual studio 2013\Projects\AcheoOnibus\AcheoOnibus\AcheoOnibus.WindowsPhone\obj\Debug\App.g.cs
+c:\users\ismael.felix\documents\visual studio 2013\Projects\AcheoOnibus\AcheoOnibus\AcheoOnibus.WindowsPhone\obj\Debug\MainPage.g.i.cs
+c:\users\ismael.felix\documents\visual studio 2013\Projects\AcheoOnibus\AcheoOnibus\AcheoOnibus.WindowsPhone\obj\Debug\MainPage.g.cs
+c:\users\ismael.felix\documents\visual studio 2013\Projects\AcheoOnibus\AcheoOnibus\AcheoOnibus.WindowsPhone\obj\Debug\XamlTypeInfo.g.cs
+c:\users\ismael.felix\documents\visual studio 2013\Projects\AcheoOnibus\AcheoOnibus\AcheoOnibus.WindowsPhone\obj\Debug\App.xaml
+c:\users\ismael.felix\documents\visual studio 2013\Projects\AcheoOnibus\AcheoOnibus\AcheoOnibus.WindowsPhone\obj\Debug\App.xbf
+c:\users\ismael.felix\documents\visual studio 2013\Projects\AcheoOnibus\AcheoOnibus\AcheoOnibus.WindowsPhone\obj\Debug\XamlSaveStateFile.xml
+c:\users\ismael.felix\documents\visual studio 2013\Projects\AcheoOnibus\AcheoOnibus\AcheoOnibus.WindowsPhone\obj\Debug\MainPage.xaml
+c:\users\ismael.felix\documents\visual studio 2013\Projects\AcheoOnibus\AcheoOnibus\AcheoOnibus.WindowsPhone\obj\Debug\MainPage.xbf
+c:\users\ismael.felix\documents\visual studio 2013\Projects\AcheoOnibus\AcheoOnibus\AcheoOnibus.WindowsPhone\obj\Debug\AcheoOnibus.WindowsPhone.exe
+c:\users\ismael.felix\documents\visual studio 2013\Projects\AcheoOnibus\AcheoOnibus\AcheoOnibus.WindowsPhone\obj\Debug\AcheoOnibus.WindowsPhone.pdb
+c:\users\ismael.felix\documents\visual studio 2013\Projects\AcheoOnibus\AcheoOnibus\AcheoOnibus.WindowsPhone\obj\Debug\AcheoOnibus.WindowsPhone.csproj.GenerateResource.Cache
+c:\users\ismael.felix\documents\visual studio 2013\Projects\AcheoOnibus\AcheoOnibus\AcheoOnibus.WindowsPhone\obj\Debug\priconfig.xml
+c:\users\ismael.felix\documents\visual studio 2013\Projects\AcheoOnibus\AcheoOnibus\AcheoOnibus.WindowsPhone\obj\Debug\priconfig.xml.intermediate
+c:\users\ismael.felix\documents\visual studio 2013\Projects\AcheoOnibus\AcheoOnibus\AcheoOnibus.WindowsPhone\obj\Debug\layout.resfiles
+c:\users\ismael.felix\documents\visual studio 2013\Projects\AcheoOnibus\AcheoOnibus\AcheoOnibus.WindowsPhone\obj\Debug\layout.resfiles.intermediate
+c:\users\ismael.felix\documents\visual studio 2013\Projects\AcheoOnibus\AcheoOnibus\AcheoOnibus.WindowsPhone\obj\Debug\resources.resfiles
+c:\users\ismael.felix\documents\visual studio 2013\Projects\AcheoOnibus\AcheoOnibus\AcheoOnibus.WindowsPhone\obj\Debug\resources.resfiles.intermediate
+c:\users\ismael.felix\documents\visual studio 2013\Projects\AcheoOnibus\AcheoOnibus\AcheoOnibus.WindowsPhone\obj\Debug\pri.resfiles
+c:\users\ismael.felix\documents\visual studio 2013\Projects\AcheoOnibus\AcheoOnibus\AcheoOnibus.WindowsPhone\obj\Debug\pri.resfiles.intermediate
+c:\users\ismael.felix\documents\visual studio 2013\Projects\AcheoOnibus\AcheoOnibus\AcheoOnibus.WindowsPhone\obj\Debug\qualifiers.txt
+c:\users\ismael.felix\documents\visual studio 2013\Projects\AcheoOnibus\AcheoOnibus\AcheoOnibus.WindowsPhone\obj\Debug\qualifiers.txt.intermediate
+c:\users\ismael.felix\documents\visual studio 2013\Projects\AcheoOnibus\AcheoOnibus\AcheoOnibus.WindowsPhone\obj\Debug\MultipleQualifiersPerDimensionFound.txt
+c:\users\ismael.felix\documents\visual studio 2013\Projects\AcheoOnibus\AcheoOnibus\AcheoOnibus.WindowsPhone\obj\Debug\ProjectArchitectures.txt
+W:\SENAI - S2B\Projeto Final\AcheoOnibus\AcheoOnibus\AcheoOnibus.WindowsPhone\bin\Debug\App.xbf
+W:\SENAI - S2B\Projeto Final\AcheoOnibus\AcheoOnibus\AcheoOnibus.WindowsPhone\bin\Debug\MainPage.xbf
+W:\SENAI - S2B\Projeto Final\AcheoOnibus\AcheoOnibus\AcheoOnibus.WindowsPhone\bin\Debug\AcheoOnibus.WindowsPhone.xr.xml
+W:\SENAI - S2B\Projeto Final\AcheoOnibus\AcheoOnibus\AcheoOnibus.WindowsPhone\bin\Debug\AcheoOnibus.WindowsPhone.exe
+W:\SENAI - S2B\Projeto Final\AcheoOnibus\AcheoOnibus\AcheoOnibus.WindowsPhone\bin\Debug\AcheoOnibus.WindowsPhone.pdb
+W:\SENAI - S2B\Projeto Final\AcheoOnibus\AcheoOnibus\AcheoOnibus.WindowsPhone\bin\Debug\resources.pri
+W:\SENAI - S2B\Projeto Final\AcheoOnibus\AcheoOnibus\AcheoOnibus.WindowsPhone\bin\Debug\AppxManifest.xml
+W:\SENAI - S2B\Projeto Final\AcheoOnibus\AcheoOnibus\AcheoOnibus.WindowsPhone\bin\Debug\AcheoOnibus.WindowsPhone.build.appxrecipe
+W:\SENAI - S2B\Projeto Final\AcheoOnibus\AcheoOnibus\AcheoOnibus.WindowsPhone\bin\Debug\Newtonsoft.Json.dll
+W:\SENAI - S2B\Projeto Final\AcheoOnibus\AcheoOnibus\AcheoOnibus.WindowsPhone\bin\Debug\Newtonsoft.Json.xml
+W:\SENAI - S2B\Projeto Final\AcheoOnibus\AcheoOnibus\AcheoOnibus.WindowsPhone\obj\Debug\AcheoOnibus.WindowsPhone.csprojResolveAssemblyReference.cache
+W:\SENAI - S2B\Projeto Final\AcheoOnibus\AcheoOnibus\AcheoOnibus.WindowsPhone\obj\Debug\App.g.i.cs
+W:\SENAI - S2B\Projeto Final\AcheoOnibus\AcheoOnibus\AcheoOnibus.WindowsPhone\obj\Debug\App.g.cs
+W:\SENAI - S2B\Projeto Final\AcheoOnibus\AcheoOnibus\AcheoOnibus.WindowsPhone\obj\Debug\MainPage.g.i.cs
+W:\SENAI - S2B\Projeto Final\AcheoOnibus\AcheoOnibus\AcheoOnibus.WindowsPhone\obj\Debug\MainPage.g.cs
+W:\SENAI - S2B\Projeto Final\AcheoOnibus\AcheoOnibus\AcheoOnibus.WindowsPhone\obj\Debug\XamlTypeInfo.g.cs
+W:\SENAI - S2B\Projeto Final\AcheoOnibus\AcheoOnibus\AcheoOnibus.WindowsPhone\obj\Debug\App.xaml
+W:\SENAI - S2B\Projeto Final\AcheoOnibus\AcheoOnibus\AcheoOnibus.WindowsPhone\obj\Debug\MainPage.xaml
+W:\SENAI - S2B\Projeto Final\AcheoOnibus\AcheoOnibus\AcheoOnibus.WindowsPhone\obj\Debug\App.xbf
+W:\SENAI - S2B\Projeto Final\AcheoOnibus\AcheoOnibus\AcheoOnibus.WindowsPhone\obj\Debug\MainPage.xbf
+W:\SENAI - S2B\Projeto Final\AcheoOnibus\AcheoOnibus\AcheoOnibus.WindowsPhone\obj\Debug\XamlSaveStateFile.xml
+W:\SENAI - S2B\Projeto Final\AcheoOnibus\AcheoOnibus\AcheoOnibus.WindowsPhone\obj\Debug\AcheoOnibus.WindowsPhone.exe
+W:\SENAI - S2B\Projeto Final\AcheoOnibus\AcheoOnibus\AcheoOnibus.WindowsPhone\obj\Debug\AcheoOnibus.WindowsPhone.pdb
+W:\SENAI - S2B\Projeto Final\AcheoOnibus\AcheoOnibus\AcheoOnibus.WindowsPhone\obj\Debug\AcheoOnibus.WindowsPhone.csproj.GenerateResource.Cache
+W:\SENAI - S2B\Projeto Final\AcheoOnibus\AcheoOnibus\AcheoOnibus.WindowsPhone\obj\Debug\priconfig.xml
+W:\SENAI - S2B\Projeto Final\AcheoOnibus\AcheoOnibus\AcheoOnibus.WindowsPhone\obj\Debug\priconfig.xml.intermediate
+W:\SENAI - S2B\Projeto Final\AcheoOnibus\AcheoOnibus\AcheoOnibus.WindowsPhone\obj\Debug\layout.resfiles
+W:\SENAI - S2B\Projeto Final\AcheoOnibus\AcheoOnibus\AcheoOnibus.WindowsPhone\obj\Debug\layout.resfiles.intermediate
+W:\SENAI - S2B\Projeto Final\AcheoOnibus\AcheoOnibus\AcheoOnibus.WindowsPhone\obj\Debug\resources.resfiles
+W:\SENAI - S2B\Projeto Final\AcheoOnibus\AcheoOnibus\AcheoOnibus.WindowsPhone\obj\Debug\resources.resfiles.intermediate
+W:\SENAI - S2B\Projeto Final\AcheoOnibus\AcheoOnibus\AcheoOnibus.WindowsPhone\obj\Debug\pri.resfiles
+W:\SENAI - S2B\Projeto Final\AcheoOnibus\AcheoOnibus\AcheoOnibus.WindowsPhone\obj\Debug\pri.resfiles.intermediate
+W:\SENAI - S2B\Projeto Final\AcheoOnibus\AcheoOnibus\AcheoOnibus.WindowsPhone\obj\Debug\qualifiers.txt
+W:\SENAI - S2B\Projeto Final\AcheoOnibus\AcheoOnibus\AcheoOnibus.WindowsPhone\obj\Debug\qualifiers.txt.intermediate
+W:\SENAI - S2B\Projeto Final\AcheoOnibus\AcheoOnibus\AcheoOnibus.WindowsPhone\obj\Debug\MultipleQualifiersPerDimensionFound.txt
+W:\SENAI - S2B\Projeto Final\AcheoOnibus\AcheoOnibus\AcheoOnibus.WindowsPhone\obj\Debug\ProjectArchitectures.txt
+W:\SENAI - S2B\Projeto Final\AcheoOnibus\AcheoOnibus\AcheoOnibus.WindowsPhone\bin\Debug\MapPage.xbf
+W:\SENAI - S2B\Projeto Final\AcheoOnibus\AcheoOnibus\AcheoOnibus.WindowsPhone\obj\Debug\MapPage.g.i.cs
+W:\SENAI - S2B\Projeto Final\AcheoOnibus\AcheoOnibus\AcheoOnibus.WindowsPhone\obj\Debug\MapPage.g.cs
+W:\SENAI - S2B\Projeto Final\AcheoOnibus\AcheoOnibus\AcheoOnibus.WindowsPhone\obj\Debug\MapPage.xaml
+W:\SENAI - S2B\Projeto Final\AcheoOnibus\AcheoOnibus\AcheoOnibus.WindowsPhone\obj\Debug\MapPage.xbf
