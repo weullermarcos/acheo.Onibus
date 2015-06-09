@@ -10,5 +10,6 @@ namespace AcheoOnibus
         public double longitude { get; set; }
         public string date { get; set; }
         public double speed { get; set; }
+        teste
     }
 }
