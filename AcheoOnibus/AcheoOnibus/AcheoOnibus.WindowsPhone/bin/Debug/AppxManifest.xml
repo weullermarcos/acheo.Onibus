@@ -8,7 +8,7 @@
     For more information on package manifest files, see http://go.microsoft.com/fwlink/?LinkID=241727
   -->
   <Identity Name="01fdb3f5-75e8-4e11-9116-19c185350051" Publisher="CN=ismael.felix" Version="1.0.0.0" ProcessorArchitecture="neutral" />
-  <mp:PhoneIdentity PhoneProductId="01fdb3f5-75e8-4e11-9116-19c185350051" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
+  <mp:PhoneIdentity PhoneProductId="96fd0587-80de-4bf9-80ee-d60114fd77d1" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
   <Properties>
     <DisplayName>AcheoOnibus.WindowsPhone</DisplayName>
     <PublisherDisplayName>ismael.felix</PublisherDisplayName>

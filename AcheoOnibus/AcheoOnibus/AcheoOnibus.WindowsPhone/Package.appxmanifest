@@ -5,7 +5,7 @@
             Publisher="CN=ismael.felix"
             Version="1.0.0.0" />
 
-  <mp:PhoneIdentity PhoneProductId="01fdb3f5-75e8-4e11-9116-19c185350051" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
+  <mp:PhoneIdentity PhoneProductId="96fd0587-80de-4bf9-80ee-d60114fd77d1" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
 
   <Properties>
     <DisplayName>AcheoOnibus.WindowsPhone</DisplayName>

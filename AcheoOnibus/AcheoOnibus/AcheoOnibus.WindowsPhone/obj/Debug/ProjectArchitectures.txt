@@ -1,1 +1,1 @@
-W:\SENAI - S2B\Projeto Final\AcheoOnibus\AcheoOnibus\AcheoOnibus.WindowsPhone\AcheoOnibus.WindowsPhone.csproj;neutral
+W:\SENAI - S2B\Projeto Final\acheo.Onibus\AcheoOnibus\AcheoOnibus\AcheoOnibus.WindowsPhone\AcheoOnibus.WindowsPhone.csproj;neutral

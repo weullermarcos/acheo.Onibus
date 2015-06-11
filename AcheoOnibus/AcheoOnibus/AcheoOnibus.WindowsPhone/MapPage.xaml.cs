@@ -6,7 +6,9 @@ using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Devices.Geolocation;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.Services.Maps;
 using Windows.Storage.Streams;
+using Windows.UI;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Maps;
@@ -39,12 +41,33 @@ namespace AcheoOnibus
         /// This parameter is typically used to configure the page.</param>
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
+            
             List<Location> listLocation = e.Parameter as List<Location>;
 
+            /*
             foreach (Location location in listLocation)
             {
                 showPosition(location);
             }
+            //*/
+
+            //*
+            Location location1 = listLocation[0];
+            Location location2 = listLocation[1];
+
+            BasicGeoposition startLocation = new BasicGeoposition();
+            startLocation.Latitude = location1.latitude;
+            startLocation.Longitude = location1.longitude;
+            Geopoint startPoint = new Geopoint(startLocation);
+
+            BasicGeoposition endLocation = new BasicGeoposition();
+            endLocation.Latitude = location2.latitude;
+            endLocation.Longitude = location2.longitude;
+            Geopoint endPoint = new Geopoint(endLocation);
+
+            ShowRouteOnMap(startPoint, endPoint);
+
+            //*///Código de teste
         }
 
         private void AddMapIcon(Geopoint point)
@@ -65,8 +88,8 @@ namespace AcheoOnibus
             position = new Geopoint(new BasicGeoposition() { Latitude = location.latitude, Longitude = location.longitude });
             try
             {
-                 mapFindBus.Style = Windows.UI.Xaml.Controls.Maps.MapStyle.AerialWithRoads;
-                //mapFindBus.Style = Windows.UI.Xaml.Controls.Maps.MapStyle.Road;
+                //mapFindBus.Style = Windows.UI.Xaml.Controls.Maps.MapStyle.AerialWithRoads;
+                mapFindBus.Style = Windows.UI.Xaml.Controls.Maps.MapStyle.Road;
 
                 AddMapIcon(position);
 
@@ -76,6 +99,72 @@ namespace AcheoOnibus
             {
 
                 throw;
+            }
+        }
+
+        private async void ShowRouteOnMap(Geopoint startPoint, Geopoint endPoint)
+        {
+
+            MapRouteFinderResult routeResult =
+                await MapRouteFinder.GetDrivingRouteAsync(
+                startPoint,
+                endPoint);
+
+
+            if (routeResult.Status == MapRouteFinderStatus.Success)
+            {
+                // Use the route to initialize a MapRouteView.
+                MapRouteView viewOfRoute = new MapRouteView(routeResult.Route);
+                viewOfRoute.RouteColor = Colors.Yellow;
+                viewOfRoute.OutlineColor = Colors.Black;
+
+                // Add the new MapRouteView to the Routes collection
+                // of the MapControl.
+                mapFindBus.Routes.Add(viewOfRoute);
+
+                AddMapIcon(startPoint);
+                AddMapIcon(endPoint);
+
+                // Fit the MapControl to the route.
+                await mapFindBus.TrySetViewBoundsAsync(routeResult.Route.BoundingBox, null, Windows.UI.Xaml.Controls.Maps.MapAnimationKind.None);
+                //await mapFindBus.TrySetViewAsync(position, 18.0, 0, 0, Windows.UI.Xaml.Controls.Maps.MapAnimationKind.Bow);
+            }
+        }
+
+        private async void ShowRouteOnMap() // Do Ismael
+        {
+            BasicGeoposition startLocation = new BasicGeoposition();
+            startLocation.Latitude = 40.7517;
+            startLocation.Longitude = -073.9766;
+            Geopoint startPoint = new Geopoint(startLocation);
+
+            BasicGeoposition endLocation = new BasicGeoposition();
+            endLocation.Latitude = 40.7669;
+            endLocation.Longitude = -073.9790;
+            Geopoint endPoint = new Geopoint(endLocation);
+
+            MapRouteFinderResult routeResult =
+                await MapRouteFinder.GetDrivingRouteAsync(
+                startPoint,
+                endPoint);
+
+
+            if (routeResult.Status == MapRouteFinderStatus.Success)
+            {
+                // Use the route to initialize a MapRouteView.
+                MapRouteView viewOfRoute = new MapRouteView(routeResult.Route);
+                viewOfRoute.RouteColor = Colors.Yellow;
+                viewOfRoute.OutlineColor = Colors.Black;
+
+                // Add the new MapRouteView to the Routes collection
+                // of the MapControl.
+                mapFindBus.Routes.Add(viewOfRoute);
+
+                // Fit the MapControl to the route.
+                await mapFindBus.TrySetViewBoundsAsync(
+                    routeResult.Route.BoundingBox,
+                    null,
+                    Windows.UI.Xaml.Controls.Maps.MapAnimationKind.None);
             }
         }
 

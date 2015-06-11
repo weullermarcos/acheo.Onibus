@@ -6,62 +6,62 @@
     <TargetPlatformIdentifier>WindowsPhoneApp</TargetPlatformIdentifier>
     <SolutionConfiguration>Debug|AnyCPU</SolutionConfiguration>
     <PackageArchitecture>neutral</PackageArchitecture>
-    <PackageIdentityName>01fdb3f5-75e8-4e11-9116-19c185350051</PackageIdentityName>
-    <IntermediateOutputPath>W:\SENAI - S2B\Projeto Final\AcheoOnibus\AcheoOnibus\AcheoOnibus.WindowsPhone\obj\Debug\</IntermediateOutputPath>
+    <PackageIdentityName>96fd0587-80de-4bf9-80ee-d60114fd77d1</PackageIdentityName>
+    <IntermediateOutputPath>W:\SENAI - S2B\Projeto Final\acheo.Onibus\AcheoOnibus\AcheoOnibus\AcheoOnibus.WindowsPhone\obj\Debug\</IntermediateOutputPath>
   </PropertyGroup>
   <ItemGroup>
-    <AppXManifest Include="W:\SENAI - S2B\Projeto Final\AcheoOnibus\AcheoOnibus\AcheoOnibus.WindowsPhone\bin\Debug\AppxManifest.xml">
+    <AppXManifest Include="W:\SENAI - S2B\Projeto Final\acheo.Onibus\AcheoOnibus\AcheoOnibus\AcheoOnibus.WindowsPhone\bin\Debug\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
-    <AppxPackagedFile Include="W:\SENAI - S2B\Projeto Final\AcheoOnibus\AcheoOnibus\AcheoOnibus.WindowsPhone\bin\Debug\AcheoOnibus.WindowsPhone.exe">
+    <AppxPackagedFile Include="W:\SENAI - S2B\Projeto Final\acheo.Onibus\AcheoOnibus\AcheoOnibus\AcheoOnibus.WindowsPhone\bin\Debug\AcheoOnibus.WindowsPhone.exe">
       <PackagePath>AcheoOnibus.WindowsPhone.exe</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="W:\SENAI - S2B\Projeto Final\AcheoOnibus\packages\Newtonsoft.Json.6.0.8\lib\portable-net40+sl5+wp80+win8+wpa81\Newtonsoft.Json.dll">
+    <AppxPackagedFile Include="W:\SENAI - S2B\Projeto Final\acheo.Onibus\AcheoOnibus\packages\Newtonsoft.Json.6.0.8\lib\portable-net40+sl5+wp80+win8+wpa81\Newtonsoft.Json.dll">
       <PackagePath>Newtonsoft.Json.dll</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="W:\SENAI - S2B\Projeto Final\AcheoOnibus\AcheoOnibus\AcheoOnibus.WindowsPhone\Assets\bus.png">
+    <AppxPackagedFile Include="W:\SENAI - S2B\Projeto Final\acheo.Onibus\AcheoOnibus\AcheoOnibus\AcheoOnibus.WindowsPhone\Assets\bus.png">
       <PackagePath>Assets\bus.png</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="W:\SENAI - S2B\Projeto Final\AcheoOnibus\AcheoOnibus\AcheoOnibus.WindowsPhone\Assets\Logo.scale-240.png">
+    <AppxPackagedFile Include="W:\SENAI - S2B\Projeto Final\acheo.Onibus\AcheoOnibus\AcheoOnibus\AcheoOnibus.WindowsPhone\Assets\Logo.scale-240.png">
       <PackagePath>Assets\Logo.scale-240.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="W:\SENAI - S2B\Projeto Final\AcheoOnibus\AcheoOnibus\AcheoOnibus.WindowsPhone\Assets\SmallLogo.scale-240.png">
+    <AppxPackagedFile Include="W:\SENAI - S2B\Projeto Final\acheo.Onibus\AcheoOnibus\AcheoOnibus\AcheoOnibus.WindowsPhone\Assets\SmallLogo.scale-240.png">
       <PackagePath>Assets\SmallLogo.scale-240.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="W:\SENAI - S2B\Projeto Final\AcheoOnibus\AcheoOnibus\AcheoOnibus.WindowsPhone\Assets\SplashScreen.scale-240.png">
+    <AppxPackagedFile Include="W:\SENAI - S2B\Projeto Final\acheo.Onibus\AcheoOnibus\AcheoOnibus\AcheoOnibus.WindowsPhone\Assets\SplashScreen.scale-240.png">
       <PackagePath>Assets\SplashScreen.scale-240.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="W:\SENAI - S2B\Projeto Final\AcheoOnibus\AcheoOnibus\AcheoOnibus.WindowsPhone\Assets\Square71x71Logo.scale-240.png">
+    <AppxPackagedFile Include="W:\SENAI - S2B\Projeto Final\acheo.Onibus\AcheoOnibus\AcheoOnibus\AcheoOnibus.WindowsPhone\Assets\Square71x71Logo.scale-240.png">
       <PackagePath>Assets\Square71x71Logo.scale-240.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="W:\SENAI - S2B\Projeto Final\AcheoOnibus\AcheoOnibus\AcheoOnibus.WindowsPhone\Assets\StoreLogo.scale-240.png">
+    <AppxPackagedFile Include="W:\SENAI - S2B\Projeto Final\acheo.Onibus\AcheoOnibus\AcheoOnibus\AcheoOnibus.WindowsPhone\Assets\StoreLogo.scale-240.png">
       <PackagePath>Assets\StoreLogo.scale-240.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="W:\SENAI - S2B\Projeto Final\AcheoOnibus\AcheoOnibus\AcheoOnibus.WindowsPhone\Assets\WideLogo.scale-240.png">
+    <AppxPackagedFile Include="W:\SENAI - S2B\Projeto Final\acheo.Onibus\AcheoOnibus\AcheoOnibus\AcheoOnibus.WindowsPhone\Assets\WideLogo.scale-240.png">
       <PackagePath>Assets\WideLogo.scale-240.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="W:\SENAI - S2B\Projeto Final\AcheoOnibus\AcheoOnibus\AcheoOnibus.WindowsPhone\bin\Debug\App.xbf">
+    <AppxPackagedFile Include="W:\SENAI - S2B\Projeto Final\acheo.Onibus\AcheoOnibus\AcheoOnibus\AcheoOnibus.WindowsPhone\bin\Debug\App.xbf">
       <PackagePath>App.xbf</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="W:\SENAI - S2B\Projeto Final\AcheoOnibus\AcheoOnibus\AcheoOnibus.WindowsPhone\bin\Debug\MainPage.xbf">
+    <AppxPackagedFile Include="W:\SENAI - S2B\Projeto Final\acheo.Onibus\AcheoOnibus\AcheoOnibus\AcheoOnibus.WindowsPhone\bin\Debug\MainPage.xbf">
       <PackagePath>MainPage.xbf</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="W:\SENAI - S2B\Projeto Final\AcheoOnibus\AcheoOnibus\AcheoOnibus.WindowsPhone\bin\Debug\MapPage.xbf">
+    <AppxPackagedFile Include="W:\SENAI - S2B\Projeto Final\acheo.Onibus\AcheoOnibus\AcheoOnibus\AcheoOnibus.WindowsPhone\bin\Debug\MapPage.xbf">
       <PackagePath>MapPage.xbf</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="W:\SENAI - S2B\Projeto Final\AcheoOnibus\AcheoOnibus\AcheoOnibus.WindowsPhone\bin\Debug\AcheoOnibus.WindowsPhone.xr.xml">
+    <AppxPackagedFile Include="W:\SENAI - S2B\Projeto Final\acheo.Onibus\AcheoOnibus\AcheoOnibus\AcheoOnibus.WindowsPhone\bin\Debug\AcheoOnibus.WindowsPhone.xr.xml">
       <PackagePath>AcheoOnibus.WindowsPhone.xr.xml</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="W:\SENAI - S2B\Projeto Final\AcheoOnibus\AcheoOnibus\AcheoOnibus.WindowsPhone\bin\Debug\resources.pri">
+    <AppxPackagedFile Include="W:\SENAI - S2B\Projeto Final\acheo.Onibus\AcheoOnibus\AcheoOnibus\AcheoOnibus.WindowsPhone\bin\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
     </AppxPackagedFile>
   </ItemGroup>
