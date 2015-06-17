@@ -574,9 +574,3 @@ namespace AcheoOnibus.AcheoOnibus_WindowsPhone_XamlTypeInfo
 }
 
 
-
-
-
-
-
-

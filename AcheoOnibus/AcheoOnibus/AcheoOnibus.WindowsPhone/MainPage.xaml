@@ -10,6 +10,7 @@
 
     <Grid>
         <Button x:Name="btnSend" Content="Enviar" HorizontalAlignment="Left" Margin="131,385,0,0" VerticalAlignment="Top" Click="btnSend_Click_1"/>
-        <ComboBox x:Name="cmbSelection" HorizontalAlignment="Left" Margin="10,65,0,0" VerticalAlignment="Top" Width="380"/>
+        <ComboBox x:Name="cmbSelection" HorizontalAlignment="Left" Margin="40,64,0,0" VerticalAlignment="Top" Width="314" PlaceholderText="Selecione o itinerário" SelectionChanged="cmbSelection_SelectionChanged"/>
+        <ComboBox x:Name="cmbSentidoViagem" HorizontalAlignment="Left" Margin="40,193,0,0" VerticalAlignment="Top" Width="314" PlaceholderText="Selecione o sentido da viagem" IsEnabled="False"/>
     </Grid>
 </Page>

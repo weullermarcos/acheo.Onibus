@@ -30,11 +30,14 @@ namespace AcheoOnibus
 
             this.NavigationCacheMode = NavigationCacheMode.Required;
 
-            List<Itinerary> iti = getItinerary();
+            List<Itinerario> iti = getItinerario();
 
-            foreach (Itinerary itinerary in iti)
+            if (iti != null && iti.Count > 0)
             {
-                cmbSelection.Items.Add(itinerary.routeNumber);
+                foreach (Itinerario itinerary in iti)
+                {
+                    cmbSelection.Items.Add(itinerary.numero);
+                }
             }
         }
 
@@ -54,30 +57,76 @@ namespace AcheoOnibus
             // this event is handled for you.
         }
 
-        private List<Itinerary> getItinerary()
+        private List<Itinerario> getItinerario()
         {
-            HttpClient cliente = new HttpClient();
+            try
+            {
+                HttpClient cliente = new HttpClient();
+                //HttpResponseMessage resposta = cliente.GetAsync("http://sdo-server.herokuapp.com/find/bus/itinerary").Result;
+                HttpResponseMessage resposta = cliente.GetAsync("http://localhost:1916/api/Itinerarios").Result;
+                HttpContent stream = resposta.Content;
+                var resultadoLista = stream.ReadAsStringAsync();
+                List<Itinerario> listLocation = JsonConvert.DeserializeObject<List<Itinerario>>(resultadoLista.Result);
+                return listLocation;
+            }
+            catch (Exception)
+            {
+                ExibirMensagem("Erro", "Erro ao buscar itinerários.");
+                throw;
+            }
+        }
 
-            HttpResponseMessage resposta = cliente.GetAsync("http://sdo-server.herokuapp.com/find/bus/itinerary").Result;
+        private List<Viagem> getViagens()
+        {
+            try
+            {
+                HttpClient cliente = new HttpClient();
+                HttpResponseMessage resposta = cliente.GetAsync("http://localhost:1916/api/Viagens").Result;
+                HttpContent stream = resposta.Content;
+                var resultadoLista = stream.ReadAsStringAsync();
+                List<Viagem> listViagens = JsonConvert.DeserializeObject<List<Viagem>>(resultadoLista.Result);
+                return listViagens;
+            }
+            catch (Exception)
+            {
+                ExibirMensagem("Erro", "Erro ao buscar viagens.");
+                throw;
+            }
+        }
 
-            HttpContent stream = resposta.Content;
-
-            var resultadoLista = stream.ReadAsStringAsync();
-
-            List<Itinerary> listLocation = JsonConvert.DeserializeObject<List<Itinerary>>(resultadoLista.Result);
-
-            return listLocation;
+        private async void ExibirMensagem(string titulo, string mensagem)
+        {
+            ContentDialog d = new ContentDialog();
+            d.Title = titulo;
+            d.Content = mensagem;
+            d.PrimaryButtonText = "Ok";
+            await d.ShowAsync();
         }
 
         private void btnSend_Click_1(object sender, RoutedEventArgs e)
         {
-            HttpClient cliente = new HttpClient();
-            HttpResponseMessage resposta = cliente.GetAsync("http://sdo-server.herokuapp.com/find/bus/position/byLineItinerary/" + cmbSelection.SelectedItem.ToString()).Result;
-            HttpContent stream = resposta.Content;
-            var resultadoLista = stream.ReadAsStringAsync();
-            List<Location> listLocation = JsonConvert.DeserializeObject<List<Location>>(resultadoLista.Result);
+            //HttpClient cliente = new HttpClient();
+            //HttpResponseMessage resposta = cliente.GetAsync("http://sdo-server.herokuapp.com/find/bus/position/byLineItinerary/" + cmbSelection.SelectedItem.ToString()).Result;
+            //HttpContent stream = resposta.Content;
+            //var resultadoLista = stream.ReadAsStringAsync();
+            //List<Location> listLocation = JsonConvert.DeserializeObject<List<Location>>(resultadoLista.Result);
 
-            Frame.Navigate(typeof(MapPage), listLocation);
+            //Frame.Navigate(typeof(MapPage), listLocation);
+        }
+
+        private void cmbSelection_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            List<Viagem> viagens = getViagens();
+
+            if (viagens != null && viagens.Count > 0)
+            {
+                foreach (Viagem viagem in viagens)
+                {
+                    cmbSentidoViagem.Items.Add(viagem.destino + "/" + viagem.origem);
+                }
+            }
+
+            cmbSentidoViagem.IsEnabled = true;
         }
     }
 }

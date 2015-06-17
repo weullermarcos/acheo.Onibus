@@ -22,6 +22,9 @@
       <RootProperty Name="Margin" />
       <RootProperty Name="VerticalAlignment" />
       <RootProperty Name="Width" />
+      <RootProperty Name="PlaceholderText" />
+      <RootProperty Name="IsEnabled" />
+      <RootEvent Name="SelectionChanged" />
     </RootType>
     <RootType FullName="AcheoOnibus.MainPage" />
     <RootType FullName="Windows.UI.Xaml.Controls.Maps.MapControl">

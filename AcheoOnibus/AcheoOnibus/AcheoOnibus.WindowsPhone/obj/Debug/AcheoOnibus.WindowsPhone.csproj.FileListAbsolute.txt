@@ -116,3 +116,44 @@ W:\SENAI - S2B\Projeto Final\acheo.Onibus\AcheoOnibus\AcheoOnibus\AcheoOnibus.Wi
 W:\SENAI - S2B\Projeto Final\acheo.Onibus\AcheoOnibus\AcheoOnibus\AcheoOnibus.WindowsPhone\obj\Debug\MultipleQualifiersPerDimensionFound.txt
 W:\SENAI - S2B\Projeto Final\acheo.Onibus\AcheoOnibus\AcheoOnibus\AcheoOnibus.WindowsPhone\obj\Debug\ProjectArchitectures.txt
 W:\SENAI - S2B\Projeto Final\acheo.Onibus\AcheoOnibus\AcheoOnibus\AcheoOnibus.WindowsPhone\obj\Debug\AcheoOnibus.WindowsPhone.csprojResolveAssemblyReference.cache
+C:\Users\weuller.marcos\Desktop\acheo.Onibus\AcheoOnibus\AcheoOnibus\AcheoOnibus.WindowsPhone\obj\Debug\AcheoOnibus.WindowsPhone.csprojResolveAssemblyReference.cache
+C:\Users\weuller.marcos\Desktop\acheo.Onibus\AcheoOnibus\AcheoOnibus\AcheoOnibus.WindowsPhone\obj\Debug\App.g.i.cs
+C:\Users\weuller.marcos\Desktop\acheo.Onibus\AcheoOnibus\AcheoOnibus\AcheoOnibus.WindowsPhone\obj\Debug\App.g.cs
+C:\Users\weuller.marcos\Desktop\acheo.Onibus\AcheoOnibus\AcheoOnibus\AcheoOnibus.WindowsPhone\obj\Debug\MainPage.g.i.cs
+C:\Users\weuller.marcos\Desktop\acheo.Onibus\AcheoOnibus\AcheoOnibus\AcheoOnibus.WindowsPhone\obj\Debug\MainPage.g.cs
+C:\Users\weuller.marcos\Desktop\acheo.Onibus\AcheoOnibus\AcheoOnibus\AcheoOnibus.WindowsPhone\obj\Debug\MapPage.g.i.cs
+C:\Users\weuller.marcos\Desktop\acheo.Onibus\AcheoOnibus\AcheoOnibus\AcheoOnibus.WindowsPhone\obj\Debug\MapPage.g.cs
+C:\Users\weuller.marcos\Desktop\acheo.Onibus\AcheoOnibus\AcheoOnibus\AcheoOnibus.WindowsPhone\obj\Debug\XamlTypeInfo.g.cs
+C:\Users\weuller.marcos\Desktop\acheo.Onibus\AcheoOnibus\AcheoOnibus\AcheoOnibus.WindowsPhone\obj\Debug\App.xaml
+C:\Users\weuller.marcos\Desktop\acheo.Onibus\AcheoOnibus\AcheoOnibus\AcheoOnibus.WindowsPhone\obj\Debug\MapPage.xaml
+C:\Users\weuller.marcos\Desktop\acheo.Onibus\AcheoOnibus\AcheoOnibus\AcheoOnibus.WindowsPhone\obj\Debug\App.xbf
+C:\Users\weuller.marcos\Desktop\acheo.Onibus\AcheoOnibus\AcheoOnibus\AcheoOnibus.WindowsPhone\obj\Debug\MapPage.xbf
+C:\Users\weuller.marcos\Desktop\acheo.Onibus\AcheoOnibus\AcheoOnibus\AcheoOnibus.WindowsPhone\obj\Debug\XamlSaveStateFile.xml
+C:\Users\weuller.marcos\Desktop\acheo.Onibus\AcheoOnibus\AcheoOnibus\AcheoOnibus.WindowsPhone\obj\Debug\AcheoOnibus.WindowsPhone.exe
+C:\Users\weuller.marcos\Desktop\acheo.Onibus\AcheoOnibus\AcheoOnibus\AcheoOnibus.WindowsPhone\obj\Debug\AcheoOnibus.WindowsPhone.pdb
+C:\Users\weuller.marcos\Desktop\acheo.Onibus\AcheoOnibus\AcheoOnibus\AcheoOnibus.WindowsPhone\bin\Debug\App.xbf
+C:\Users\weuller.marcos\Desktop\acheo.Onibus\AcheoOnibus\AcheoOnibus\AcheoOnibus.WindowsPhone\bin\Debug\MainPage.xbf
+C:\Users\weuller.marcos\Desktop\acheo.Onibus\AcheoOnibus\AcheoOnibus\AcheoOnibus.WindowsPhone\bin\Debug\MapPage.xbf
+C:\Users\weuller.marcos\Desktop\acheo.Onibus\AcheoOnibus\AcheoOnibus\AcheoOnibus.WindowsPhone\bin\Debug\AcheoOnibus.WindowsPhone.xr.xml
+C:\Users\weuller.marcos\Desktop\acheo.Onibus\AcheoOnibus\AcheoOnibus\AcheoOnibus.WindowsPhone\bin\Debug\AcheoOnibus.WindowsPhone.exe
+C:\Users\weuller.marcos\Desktop\acheo.Onibus\AcheoOnibus\AcheoOnibus\AcheoOnibus.WindowsPhone\bin\Debug\AcheoOnibus.WindowsPhone.pdb
+C:\Users\weuller.marcos\Desktop\acheo.Onibus\AcheoOnibus\AcheoOnibus\AcheoOnibus.WindowsPhone\bin\Debug\resources.pri
+C:\Users\weuller.marcos\Desktop\acheo.Onibus\AcheoOnibus\AcheoOnibus\AcheoOnibus.WindowsPhone\bin\Debug\AppxManifest.xml
+C:\Users\weuller.marcos\Desktop\acheo.Onibus\AcheoOnibus\AcheoOnibus\AcheoOnibus.WindowsPhone\bin\Debug\AcheoOnibus.WindowsPhone.build.appxrecipe
+C:\Users\weuller.marcos\Desktop\acheo.Onibus\AcheoOnibus\AcheoOnibus\AcheoOnibus.WindowsPhone\bin\Debug\Newtonsoft.Json.dll
+C:\Users\weuller.marcos\Desktop\acheo.Onibus\AcheoOnibus\AcheoOnibus\AcheoOnibus.WindowsPhone\bin\Debug\Newtonsoft.Json.xml
+C:\Users\weuller.marcos\Desktop\acheo.Onibus\AcheoOnibus\AcheoOnibus\AcheoOnibus.WindowsPhone\obj\Debug\MainPage.xaml
+C:\Users\weuller.marcos\Desktop\acheo.Onibus\AcheoOnibus\AcheoOnibus\AcheoOnibus.WindowsPhone\obj\Debug\MainPage.xbf
+C:\Users\weuller.marcos\Desktop\acheo.Onibus\AcheoOnibus\AcheoOnibus\AcheoOnibus.WindowsPhone\obj\Debug\AcheoOnibus.WindowsPhone.csproj.GenerateResource.Cache
+C:\Users\weuller.marcos\Desktop\acheo.Onibus\AcheoOnibus\AcheoOnibus\AcheoOnibus.WindowsPhone\obj\Debug\priconfig.xml
+C:\Users\weuller.marcos\Desktop\acheo.Onibus\AcheoOnibus\AcheoOnibus\AcheoOnibus.WindowsPhone\obj\Debug\priconfig.xml.intermediate
+C:\Users\weuller.marcos\Desktop\acheo.Onibus\AcheoOnibus\AcheoOnibus\AcheoOnibus.WindowsPhone\obj\Debug\layout.resfiles
+C:\Users\weuller.marcos\Desktop\acheo.Onibus\AcheoOnibus\AcheoOnibus\AcheoOnibus.WindowsPhone\obj\Debug\layout.resfiles.intermediate
+C:\Users\weuller.marcos\Desktop\acheo.Onibus\AcheoOnibus\AcheoOnibus\AcheoOnibus.WindowsPhone\obj\Debug\resources.resfiles
+C:\Users\weuller.marcos\Desktop\acheo.Onibus\AcheoOnibus\AcheoOnibus\AcheoOnibus.WindowsPhone\obj\Debug\resources.resfiles.intermediate
+C:\Users\weuller.marcos\Desktop\acheo.Onibus\AcheoOnibus\AcheoOnibus\AcheoOnibus.WindowsPhone\obj\Debug\pri.resfiles
+C:\Users\weuller.marcos\Desktop\acheo.Onibus\AcheoOnibus\AcheoOnibus\AcheoOnibus.WindowsPhone\obj\Debug\pri.resfiles.intermediate
+C:\Users\weuller.marcos\Desktop\acheo.Onibus\AcheoOnibus\AcheoOnibus\AcheoOnibus.WindowsPhone\obj\Debug\qualifiers.txt
+C:\Users\weuller.marcos\Desktop\acheo.Onibus\AcheoOnibus\AcheoOnibus\AcheoOnibus.WindowsPhone\obj\Debug\qualifiers.txt.intermediate
+C:\Users\weuller.marcos\Desktop\acheo.Onibus\AcheoOnibus\AcheoOnibus\AcheoOnibus.WindowsPhone\obj\Debug\MultipleQualifiersPerDimensionFound.txt
+C:\Users\weuller.marcos\Desktop\acheo.Onibus\AcheoOnibus\AcheoOnibus\AcheoOnibus.WindowsPhone\obj\Debug\ProjectArchitectures.txt

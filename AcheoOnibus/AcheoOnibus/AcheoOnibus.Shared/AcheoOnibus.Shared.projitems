@@ -15,7 +15,8 @@
     <Compile Include="$(MSBuildThisFileDirectory)App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)Itinerary.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Itinerario.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Location.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Viagem.cs" />
   </ItemGroup>
 </Project>

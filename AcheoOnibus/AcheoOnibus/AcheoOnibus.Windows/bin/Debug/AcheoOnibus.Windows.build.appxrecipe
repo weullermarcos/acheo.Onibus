@@ -1,50 +1,50 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
-    <Machine>WEULLER-PC</Machine>
-    <WindowsUser>Weuller</WindowsUser>
+    <Machine>LAB-F26-10</Machine>
+    <WindowsUser>weuller.marcos</WindowsUser>
     <TargetPlatformIdentifier>Windows</TargetPlatformIdentifier>
     <SolutionConfiguration>Debug|AnyCPU</SolutionConfiguration>
     <PackageArchitecture>neutral</PackageArchitecture>
     <PackageIdentityName>f6d2e051-c6c4-4955-b479-1acd17cafeca</PackageIdentityName>
-    <IntermediateOutputPath>W:\SENAI - S2B\Projeto Final\acheo.Onibus\AcheoOnibus\AcheoOnibus\AcheoOnibus.Windows\obj\Debug\</IntermediateOutputPath>
+    <IntermediateOutputPath>C:\Users\weuller.marcos\Desktop\acheo.Onibus\AcheoOnibus\AcheoOnibus\AcheoOnibus.Windows\obj\Debug\</IntermediateOutputPath>
   </PropertyGroup>
   <ItemGroup>
-    <AppXManifest Include="W:\SENAI - S2B\Projeto Final\acheo.Onibus\AcheoOnibus\AcheoOnibus\AcheoOnibus.Windows\bin\Debug\AppxManifest.xml">
+    <AppXManifest Include="C:\Users\weuller.marcos\Desktop\acheo.Onibus\AcheoOnibus\AcheoOnibus\AcheoOnibus.Windows\bin\Debug\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
-    <AppxPackagedFile Include="W:\SENAI - S2B\Projeto Final\acheo.Onibus\AcheoOnibus\AcheoOnibus\AcheoOnibus.Windows\bin\Debug\AcheoOnibus.Windows.exe">
+    <AppxPackagedFile Include="C:\Users\weuller.marcos\Desktop\acheo.Onibus\AcheoOnibus\AcheoOnibus\AcheoOnibus.Windows\bin\Debug\AcheoOnibus.Windows.exe">
       <PackagePath>AcheoOnibus.Windows.exe</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="W:\SENAI - S2B\Projeto Final\acheo.Onibus\AcheoOnibus\AcheoOnibus\AcheoOnibus.Windows\Assets\Logo.scale-100.png">
+    <AppxPackagedFile Include="C:\Users\weuller.marcos\Desktop\acheo.Onibus\AcheoOnibus\AcheoOnibus\AcheoOnibus.Windows\Assets\Logo.scale-100.png">
       <PackagePath>Assets\Logo.scale-100.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="W:\SENAI - S2B\Projeto Final\acheo.Onibus\AcheoOnibus\AcheoOnibus\AcheoOnibus.Windows\Assets\SmallLogo.scale-100.png">
+    <AppxPackagedFile Include="C:\Users\weuller.marcos\Desktop\acheo.Onibus\AcheoOnibus\AcheoOnibus\AcheoOnibus.Windows\Assets\SmallLogo.scale-100.png">
       <PackagePath>Assets\SmallLogo.scale-100.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="W:\SENAI - S2B\Projeto Final\acheo.Onibus\AcheoOnibus\AcheoOnibus\AcheoOnibus.Windows\Assets\SplashScreen.scale-100.png">
+    <AppxPackagedFile Include="C:\Users\weuller.marcos\Desktop\acheo.Onibus\AcheoOnibus\AcheoOnibus\AcheoOnibus.Windows\Assets\SplashScreen.scale-100.png">
       <PackagePath>Assets\SplashScreen.scale-100.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="W:\SENAI - S2B\Projeto Final\acheo.Onibus\AcheoOnibus\AcheoOnibus\AcheoOnibus.Windows\Assets\StoreLogo.scale-100.png">
+    <AppxPackagedFile Include="C:\Users\weuller.marcos\Desktop\acheo.Onibus\AcheoOnibus\AcheoOnibus\AcheoOnibus.Windows\Assets\StoreLogo.scale-100.png">
       <PackagePath>Assets\StoreLogo.scale-100.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="W:\SENAI - S2B\Projeto Final\acheo.Onibus\AcheoOnibus\AcheoOnibus\AcheoOnibus.Windows\bin\Debug\App.xbf">
+    <AppxPackagedFile Include="C:\Users\weuller.marcos\Desktop\acheo.Onibus\AcheoOnibus\AcheoOnibus\AcheoOnibus.Windows\bin\Debug\App.xbf">
       <PackagePath>App.xbf</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="W:\SENAI - S2B\Projeto Final\acheo.Onibus\AcheoOnibus\AcheoOnibus\AcheoOnibus.Windows\bin\Debug\MainPage.xbf">
+    <AppxPackagedFile Include="C:\Users\weuller.marcos\Desktop\acheo.Onibus\AcheoOnibus\AcheoOnibus\AcheoOnibus.Windows\bin\Debug\MainPage.xbf">
       <PackagePath>MainPage.xbf</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="W:\SENAI - S2B\Projeto Final\acheo.Onibus\AcheoOnibus\AcheoOnibus\AcheoOnibus.Windows\bin\Debug\AcheoOnibus.Windows.xr.xml">
+    <AppxPackagedFile Include="C:\Users\weuller.marcos\Desktop\acheo.Onibus\AcheoOnibus\AcheoOnibus\AcheoOnibus.Windows\bin\Debug\AcheoOnibus.Windows.xr.xml">
       <PackagePath>AcheoOnibus.Windows.xr.xml</PackagePath>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="W:\SENAI - S2B\Projeto Final\acheo.Onibus\AcheoOnibus\AcheoOnibus\AcheoOnibus.Windows\bin\Debug\resources.pri">
+    <AppxPackagedFile Include="C:\Users\weuller.marcos\Desktop\acheo.Onibus\AcheoOnibus\AcheoOnibus\AcheoOnibus.Windows\bin\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
     </AppxPackagedFile>
   </ItemGroup>
