@@ -24,17 +24,24 @@ namespace AcheoOnibus
     /// </summary>
     public sealed partial class MainPage : Page
     {
+        List<Itinerario> listaDeItinerarios = new List<Itinerario>();
+        List<Viagem> listaDeViagens = new List<Viagem>();
+        int idItinerarioSelecionado = 0;
+        
+        Dictionary<string, int> dicionarioSentidoViagem = new Dictionary<string, int>();
+
+
         public MainPage()
         {
             this.InitializeComponent();
 
             this.NavigationCacheMode = NavigationCacheMode.Required;
 
-            List<Itinerario> iti = getItinerario();
+            listaDeItinerarios = getItinerario();
 
-            if (iti != null && iti.Count > 0)
+            if (listaDeItinerarios != null && listaDeItinerarios.Count > 0)
             {
-                foreach (Itinerario itinerary in iti)
+                foreach (Itinerario itinerary in listaDeItinerarios)
                 {
                     cmbSelection.Items.Add(itinerary.numero);
                 }
@@ -62,7 +69,6 @@ namespace AcheoOnibus
             try
             {
                 HttpClient cliente = new HttpClient();
-                //HttpResponseMessage resposta = cliente.GetAsync("http://sdo-server.herokuapp.com/find/bus/itinerary").Result;
                 HttpResponseMessage resposta = cliente.GetAsync("http://localhost:1916/api/Itinerarios").Result;
                 HttpContent stream = resposta.Content;
                 var resultadoLista = stream.ReadAsStringAsync();
@@ -103,30 +109,66 @@ namespace AcheoOnibus
             await d.ShowAsync();
         }
 
-        private void btnSend_Click_1(object sender, RoutedEventArgs e)
-        {
-            //HttpClient cliente = new HttpClient();
-            //HttpResponseMessage resposta = cliente.GetAsync("http://sdo-server.herokuapp.com/find/bus/position/byLineItinerary/" + cmbSelection.SelectedItem.ToString()).Result;
-            //HttpContent stream = resposta.Content;
-            //var resultadoLista = stream.ReadAsStringAsync();
-            //List<Location> listLocation = JsonConvert.DeserializeObject<List<Location>>(resultadoLista.Result);
-
-            //Frame.Navigate(typeof(MapPage), listLocation);
-        }
-
         private void cmbSelection_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            List<Viagem> viagens = getViagens();
+            cmbSentidoViagem.Items.Clear();
+            dicionarioSentidoViagem.Clear();
+            btnSend.IsEnabled = false;
 
-            if (viagens != null && viagens.Count > 0)
+            listaDeViagens = getViagens();
+
+            idItinerarioSelecionado = getIdItinerarioSelecionado();
+
+            if (listaDeViagens != null && listaDeViagens.Count > 0)
             {
-                foreach (Viagem viagem in viagens)
+                foreach (Viagem viagem in listaDeViagens)
                 {
-                    cmbSentidoViagem.Items.Add(viagem.destino + "/" + viagem.origem);
+                    if (idItinerarioSelecionado == viagem.idItinerarioFK)
+                    {
+                        string auxiliar = viagem.origem + "/" + viagem.destino;
+                        cmbSentidoViagem.Items.Add(auxiliar);
+                        dicionarioSentidoViagem.Add(auxiliar, viagem.sentidoViagem);
+                    }
                 }
             }
 
             cmbSentidoViagem.IsEnabled = true;
+        }
+
+        private int getIdItinerarioSelecionado() 
+        {
+            foreach (Itinerario itinerario in listaDeItinerarios)
+            {
+                if (itinerario.numero == cmbSelection.SelectedItem.ToString())
+                {
+                    return itinerario.idItinerario;
+                }
+            }
+
+            return 0;
+        }
+
+        private void btnSend_Click_1(object sender, RoutedEventArgs e)
+        {
+            List<object> listaDeParametros = new List<object>();
+
+            listaDeParametros.Add(cmbSelection.SelectedItem.ToString());
+
+            foreach (KeyValuePair<string, int> viagem in dicionarioSentidoViagem)
+            {
+                if (viagem.Key.ToString() == cmbSentidoViagem.SelectedItem.ToString())
+                {
+                    listaDeParametros.Add(viagem.Value.ToString());
+                }
+                //MessageBox.Show(pair.Key.ToString() + "  -  " + pair.Value.ToString());
+            }
+
+            Frame.Navigate(typeof(MapPage), listaDeParametros);
+        }
+
+        private void cmbSentidoViagem_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            btnSend.IsEnabled = true;
         }
     }
 }

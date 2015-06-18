@@ -10,8 +10,6 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
-
         <Maps:MapControl x:Name="mapFindBus" HorizontalAlignment="Left" MapServiceToken="5q1-hsFTtQIO-oI9I2bT6g" Margin="10,10,0,0" VerticalAlignment="Top" Width="380" Height="620"/>
-
     </Grid>
 </Page>

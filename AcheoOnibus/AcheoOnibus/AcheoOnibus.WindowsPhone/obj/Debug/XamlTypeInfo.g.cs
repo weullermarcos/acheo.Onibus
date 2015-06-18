@@ -204,6 +204,7 @@ namespace AcheoOnibus.AcheoOnibus_WindowsPhone_XamlTypeInfo
             case 3:   //  AcheoOnibus.MapPage
                 userType = new global::AcheoOnibus.AcheoOnibus_WindowsPhone_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
                 userType.Activator = Activate_3_MapPage;
+                userType.AddMemberName("Posicao");
                 userType.AddMemberName("position");
                 userType.SetIsLocalType();
                 xamlType = userType;
@@ -223,12 +224,22 @@ namespace AcheoOnibus.AcheoOnibus_WindowsPhone_XamlTypeInfo
         }
 
 
-        private object get_0_MapPage_position(object instance)
+        private object get_0_MapPage_Posicao(object instance)
+        {
+            var that = (global::AcheoOnibus.MapPage)instance;
+            return that.Posicao;
+        }
+        private void set_0_MapPage_Posicao(object instance, object Value)
+        {
+            var that = (global::AcheoOnibus.MapPage)instance;
+            that.Posicao = (global::Windows.Devices.Geolocation.Geopoint)Value;
+        }
+        private object get_1_MapPage_position(object instance)
         {
             var that = (global::AcheoOnibus.MapPage)instance;
             return that.position;
         }
-        private void set_0_MapPage_position(object instance, object Value)
+        private void set_1_MapPage_position(object instance, object Value)
         {
             var that = (global::AcheoOnibus.MapPage)instance;
             that.position = (global::Windows.Devices.Geolocation.Geopoint)Value;
@@ -241,11 +252,17 @@ namespace AcheoOnibus.AcheoOnibus_WindowsPhone_XamlTypeInfo
 
             switch (longMemberName)
             {
+            case "AcheoOnibus.MapPage.Posicao":
+                userType = (global::AcheoOnibus.AcheoOnibus_WindowsPhone_XamlTypeInfo.XamlUserType)GetXamlTypeByName("AcheoOnibus.MapPage");
+                xamlMember = new global::AcheoOnibus.AcheoOnibus_WindowsPhone_XamlTypeInfo.XamlMember(this, "Posicao", "Windows.Devices.Geolocation.Geopoint");
+                xamlMember.Getter = get_0_MapPage_Posicao;
+                xamlMember.Setter = set_0_MapPage_Posicao;
+                break;
             case "AcheoOnibus.MapPage.position":
                 userType = (global::AcheoOnibus.AcheoOnibus_WindowsPhone_XamlTypeInfo.XamlUserType)GetXamlTypeByName("AcheoOnibus.MapPage");
                 xamlMember = new global::AcheoOnibus.AcheoOnibus_WindowsPhone_XamlTypeInfo.XamlMember(this, "position", "Windows.Devices.Geolocation.Geopoint");
-                xamlMember.Getter = get_0_MapPage_position;
-                xamlMember.Setter = set_0_MapPage_position;
+                xamlMember.Getter = get_1_MapPage_position;
+                xamlMember.Setter = set_1_MapPage_position;
                 break;
             }
             return xamlMember;

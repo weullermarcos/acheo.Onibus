@@ -45,6 +45,12 @@
       <PackagePath>Assets\StoreLogo.scale-240.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\weuller.marcos\Desktop\acheo.Onibus\AcheoOnibus\AcheoOnibus\AcheoOnibus.WindowsPhone\Assets\user_1.png">
+      <PackagePath>Assets\user_1.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\weuller.marcos\Desktop\acheo.Onibus\AcheoOnibus\AcheoOnibus\AcheoOnibus.WindowsPhone\Assets\user_2.png">
+      <PackagePath>Assets\user_2.png</PackagePath>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\weuller.marcos\Desktop\acheo.Onibus\AcheoOnibus\AcheoOnibus\AcheoOnibus.WindowsPhone\Assets\WideLogo.scale-240.png">
       <PackagePath>Assets\WideLogo.scale-240.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>

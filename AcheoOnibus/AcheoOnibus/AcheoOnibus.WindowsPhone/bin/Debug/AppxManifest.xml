@@ -24,13 +24,14 @@
   <Applications>
     <Application Id="App" Executable="AcheoOnibus.WindowsPhone.exe" EntryPoint="AcheoOnibus.WindowsPhone.App">
       <m3:VisualElements DisplayName="AcheoOnibus.WindowsPhone" Square150x150Logo="Assets\Logo.png" Square44x44Logo="Assets\SmallLogo.png" Description="AcheoOnibus.WindowsPhone" ForegroundText="light" BackgroundColor="transparent">
-        <m3:DefaultTile Wide310x150Logo="Assets\WideLogo.png" Square71x71Logo="Assets\Square71x71Logo.png" />
+        <m3:DefaultTile Wide310x150Logo="Assets\WideLogo.png" Square71x71Logo="Assets\Square71x71Logo.png"></m3:DefaultTile>
         <m3:SplashScreen Image="Assets\SplashScreen.png" />
       </m3:VisualElements>
     </Application>
   </Applications>
   <Capabilities>
     <Capability Name="internetClientServer" />
+    <DeviceCapability Name="location" />
   </Capabilities>
   <build:Metadata>
     <build:Item Name="SharedGUID" Value="5a82db8e-d091-4889-932d-f3f2dd640469" />
