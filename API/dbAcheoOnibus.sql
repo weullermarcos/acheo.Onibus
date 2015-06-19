@@ -63,7 +63,7 @@ GO
 
 CREATE TABLE tblOnibusItinerario(
 	idOnibusItinerario INT PRIMARY KEY IDENTITY(1,1),
-	data DATE NOT NULL,
+	data DATETIME NOT NULL,
 	idOnibusFK INT NOT NULL FOREIGN KEY REFERENCES tblOnibus(idOnibus),
 	idItinerarioFK INT NOT NULL FOREIGN KEY REFERENCES tblItinerario(idItinerario)
 )

@@ -17,6 +17,7 @@
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Itinerario.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Location.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Onibus.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Viagem.cs" />
   </ItemGroup>
 </Project>

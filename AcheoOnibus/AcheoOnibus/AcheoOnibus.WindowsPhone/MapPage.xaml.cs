@@ -1,7 +1,9 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Net.Http;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Devices.Geolocation;
 using Windows.Foundation;
@@ -18,6 +20,7 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
+
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkID=390556
 
 namespace AcheoOnibus
@@ -27,11 +30,13 @@ namespace AcheoOnibus
     /// </summary>
     public sealed partial class MapPage : Page
     {
-        public Geopoint Posicao { get; set; }
+        public Geopoint posicao { get; set; }
 
         string itinerario;
-        string sentidoViagem;
+        int sentidoViagem;
         bool mostraUsuario = true;
+        List<Onibus> listaOnibus = new List<Onibus>();
+        DispatcherTimer contador = new DispatcherTimer();
 
         public MapPage()
         {
@@ -53,17 +58,65 @@ namespace AcheoOnibus
             if (listaDeParametros != null && listaDeParametros.Count > 1)
             {
                 itinerario = listaDeParametros[0].ToString();
-                sentidoViagem = listaDeParametros[1].ToString();
+                sentidoViagem = Convert.ToInt32(listaDeParametros[1].ToString());
             }
 
             RecuperaPosicaoAtual();
+        }
 
-            /*
-            foreach (Location location in listLocation)
+        private async void ExibirMensagem(string titulo, string mensagem)
+        {
+            ContentDialog d = new ContentDialog();
+            d.Title = titulo;
+            d.Content = mensagem;
+            d.PrimaryButtonText = "Ok";
+            await d.ShowAsync();
+        }
+
+        private void getPosicaoAtualOnibus(object sender, object e)
+        {
+            listaOnibus.Clear();
+            try
             {
-                showPosition(location);
+                HttpClient cliente = new HttpClient();
+                HttpResponseMessage resposta = cliente.GetAsync("http://localhost:1916/api/Onibus").Result;
+                HttpContent stream = resposta.Content;
+                var resultadoLista = stream.ReadAsStringAsync();
+                List<Onibus> listOnibus = JsonConvert.DeserializeObject<List<Onibus>>(resultadoLista.Result);
+
+                if (listOnibus == null)
+                {
+                    contador.Stop();
+                    throw new ArgumentException("Erro ao receber dados!");
+                }
+
+                foreach (Onibus onibus in listOnibus)
+                {
+                    if (onibus.numero == itinerario && onibus.sentidoViagem == sentidoViagem)
+                    {
+                        listaOnibus.Add(onibus);
+                    }
+                }
+
+                if (listOnibus == null)
+                {
+                    contador.Stop();
+                    throw new ArgumentException("Erro! Ônibus não encontrado para o itinerário e sentido de viagem informados!");
+                }
+
+                foreach (Onibus onibus in listaOnibus)
+                {
+                    mostraUsuario = false;
+                    posicao = new Geopoint(new BasicGeoposition() { Latitude = Convert.ToDouble(onibus.latitude), Longitude = Convert.ToDouble(onibus.longitude) });
+                    MostrarPosicao(posicao);
+                }
+
             }
-            //*/
+            catch (Exception err)
+            {
+                //ExibirMensagem("Erro!", err.Message);
+                Frame.Navigate(typeof(MainPage), err.Message);
+            }
         }
 
         private void AddMapIcon(Geopoint point)
@@ -112,8 +165,17 @@ namespace AcheoOnibus
         {
             Geolocator g = new Geolocator();
             Geoposition gp = await g.GetGeopositionAsync();
-            Posicao = new Geopoint(new BasicGeoposition() { Latitude = gp.Coordinate.Point.Position.Latitude, Longitude = gp.Coordinate.Point.Position.Longitude });
-            MostrarPosicao(Posicao);
+            posicao = new Geopoint(new BasicGeoposition() { Latitude = gp.Coordinate.Point.Position.Latitude, Longitude = gp.Coordinate.Point.Position.Longitude });
+            MostrarPosicao(posicao);
+            iniciarContador();
         }
+
+        private void iniciarContador()
+        {
+            contador.Tick += getPosicaoAtualOnibus;
+            contador.Interval = new TimeSpan(0, 0, 5);
+            contador.Start();
+        }
+
     }
 }
