@@ -108,9 +108,10 @@ namespace AcheoOnibus
                 {
                     mostraUsuario = false;
                     posicao = new Geopoint(new BasicGeoposition() { Latitude = Convert.ToDouble(onibus.latitude), Longitude = Convert.ToDouble(onibus.longitude) });
-                    MostrarPosicao(posicao);
+                    AddMapIcon(posicao);
                 }
 
+                MostrarPosicao(posicao);
             }
             catch (Exception err)
             {
@@ -143,22 +144,29 @@ namespace AcheoOnibus
 
         private async void MostrarPosicao(Geopoint posicao)
         {
+            if (sldZoom.Value == 0)
+            {
+                sldZoom.Value = 1;
+            }
+
+            mapFindBus.Style = Windows.UI.Xaml.Controls.Maps.MapStyle.Road;
+            await mapFindBus.TrySetViewAsync(posicao, sldZoom.Value, sldEixoX.Value, sldEixoY.Value, MapAnimationKind.Bow);
+
+
             //position = new Geopoint(new BasicGeoposition() { Latitude = -15.823127, Longitude = -47.9208744 });
             //position = new Geopoint(new BasicGeoposition() { Latitude = location.latitude, Longitude = location.longitude });
-            try
-            {
-                //mapFindBus.Style = Windows.UI.Xaml.Controls.Maps.MapStyle.AerialWithRoads;
-                mapFindBus.Style = Windows.UI.Xaml.Controls.Maps.MapStyle.Road;
+            //try
+            //{
+            //    //mapFindBus.Style = Windows.UI.Xaml.Controls.Maps.MapStyle.AerialWithRoads;
+            //    mapFindBus.Style = Windows.UI.Xaml.Controls.Maps.MapStyle.Road;
 
-                AddMapIcon(posicao);
+            //    await mapFindBus.TrySetViewAsync(posicao, 18.0, 0, 0, Windows.UI.Xaml.Controls.Maps.MapAnimationKind.Bow);
+            //}
+            //catch (Exception)
+            //{
 
-                await mapFindBus.TrySetViewAsync(posicao, 18.0, 0, 0, Windows.UI.Xaml.Controls.Maps.MapAnimationKind.Bow);
-            }
-            catch (Exception)
-            {
-
-                throw;
-            }
+            //    throw;
+            //}
         }
 
         private async void RecuperaPosicaoAtual()
@@ -166,7 +174,10 @@ namespace AcheoOnibus
             Geolocator g = new Geolocator();
             Geoposition gp = await g.GetGeopositionAsync();
             posicao = new Geopoint(new BasicGeoposition() { Latitude = gp.Coordinate.Point.Position.Latitude, Longitude = gp.Coordinate.Point.Position.Longitude });
+            sldZoom.Value = 18.0;
+            AddMapIcon(posicao);
             MostrarPosicao(posicao);
+            await System.Threading.Tasks.Task.Delay(TimeSpan.FromSeconds(5));
             iniciarContador();
         }
 
@@ -177,5 +188,32 @@ namespace AcheoOnibus
             contador.Start();
         }
 
+        private void sldEixoY_ValueChanged(object sender, RangeBaseValueChangedEventArgs e)
+        {
+            if (sldEixoY != null)
+            {
+                MostrarPosicao(posicao); 
+            }
+            
+            //mapFindBus.DesiredPitch = sldEixoY.Value;
+        }
+
+        private void sldEixoX_ValueChanged(object sender, RangeBaseValueChangedEventArgs e)
+        {
+            if (sldEixoX != null)
+            {
+                MostrarPosicao(posicao);
+            }
+            //mapFindBus.DesiredPitch = sldEixoX.Value;
+        }
+
+        private void sldZoom_ValueChanged(object sender, RangeBaseValueChangedEventArgs e)
+        {
+            if (sldZoom != null)
+            {
+                MostrarPosicao(posicao);
+            }
+            //mapFindBus.DesiredPitch = sldZoom.Value;
+        }
     }
 }

@@ -11,5 +11,8 @@
 
     <Grid>
         <Maps:MapControl x:Name="mapFindBus" HorizontalAlignment="Left" MapServiceToken="5q1-hsFTtQIO-oI9I2bT6g" Margin="10,10,0,0" VerticalAlignment="Top" Width="380" Height="620"/>
+        <Slider Name="sldEixoY" Margin="296,13,0,0" RenderTransformOrigin="0.435,0.499" Height="43" VerticalAlignment="Top" HorizontalAlignment="Left" Width="94" Minimum="0" Maximum="70" ValueChanged="sldEixoY_ValueChanged"/>
+        <Slider Name="sldEixoX" Margin="296,587,0,0" RenderTransformOrigin="0.435,0.499" Height="43" VerticalAlignment="Top" HorizontalAlignment="Left" Width="94" Minimum="0" Maximum="180" ValueChanged="sldEixoX_ValueChanged"/>
+        <Slider Name="sldZoom" Margin="11,11,0,0" RenderTransformOrigin="0.435,0.499" Height="90" VerticalAlignment="Top" HorizontalAlignment="Left" Width="39" Orientation="Vertical" Minimum="1" Maximum="20" ValueChanged="sldZoom_ValueChanged"/>
     </Grid>
 </Page>
