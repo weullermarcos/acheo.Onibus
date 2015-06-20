@@ -110,34 +110,6 @@ namespace AcheoOnibus
             await d.ShowAsync();
         }
 
-        private void cmbSelection_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            Button btnSend = buscarControleFilho<Button>(hubControl, "btnSend") as Button;
-            ComboBox cmbSentidoViagem = buscarControleFilho<ComboBox>(hubControl, "cmbSentidoViagem") as ComboBox;
-
-            cmbSentidoViagem.Items.Clear();
-            dicionarioSentidoViagem.Clear();
-            btnSend.IsEnabled = false;
-
-            listaDeViagens = getViagens();
-
-            idItinerarioSelecionado = getIdItinerarioSelecionado();
-
-            if (listaDeViagens != null && listaDeViagens.Count > 0)
-            {
-                foreach (Viagem viagem in listaDeViagens)
-                {
-                    if (idItinerarioSelecionado == viagem.idItinerarioFK)
-                    {
-                        string auxiliar = viagem.origem + "/" + viagem.destino;
-                        cmbSentidoViagem.Items.Add(auxiliar);
-                        dicionarioSentidoViagem.Add(auxiliar, viagem.sentidoViagem);
-                    }
-                }
-            }
-
-            cmbSentidoViagem.IsEnabled = true;
-        }
 
         private int getIdItinerarioSelecionado()
         {
@@ -168,10 +140,38 @@ namespace AcheoOnibus
                 {
                     listaDeParametros.Add(viagem.Value.ToString());
                 }
-                //MessageBox.Show(pair.Key.ToString() + "  -  " + pair.Value.ToString());
             }
 
             Frame.Navigate(typeof(MapPage), listaDeParametros);
+        }
+
+        private void cmbSelection_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            Button btnSend = buscarControleFilho<Button>(hubControl, "btnSend") as Button;
+            ComboBox cmbSentidoViagem = buscarControleFilho<ComboBox>(hubControl, "cmbSentidoViagem") as ComboBox;
+
+            cmbSentidoViagem.Items.Clear();
+            dicionarioSentidoViagem.Clear();
+            btnSend.IsEnabled = false;
+
+            listaDeViagens = getViagens();
+
+            idItinerarioSelecionado = getIdItinerarioSelecionado();
+
+            if (listaDeViagens != null && listaDeViagens.Count > 0)
+            {
+                foreach (Viagem viagem in listaDeViagens)
+                {
+                    if (idItinerarioSelecionado == viagem.idItinerarioFK)
+                    {
+                        string auxiliar = viagem.origem + "/" + viagem.destino;
+                        cmbSentidoViagem.Items.Add(auxiliar);
+                        dicionarioSentidoViagem.Add(auxiliar, viagem.sentidoViagem);
+                    }
+                }
+            }
+
+            cmbSentidoViagem.IsEnabled = true;
         }
 
         private void cmbSentidoViagem_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -205,10 +205,5 @@ namespace AcheoOnibus
             }
             return null;
         }
-
-        //private DependencyObject BuscarControleFilho<T>(DependencyObject controle, string controleFilho)
-        //{
-
-        //}
     }
 }

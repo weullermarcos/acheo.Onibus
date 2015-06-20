@@ -1,5 +1,6 @@
 <XamlCompilerSaveState>
   <ReferenceAssemblyList>
-    <LocalAssembly PathName="w:\senai - s2b\projeto final\acheo.onibus\acheoonibus\acheoonibus\acheoonibus.windows\obj\debug\intermediatexaml\acheoonibus.windows.exe" HashGuid="bbc21389-914b-d127-ca03-bf5eaed60486" />
+    <LocalAssembly PathName="w:\senai - s2b\projeto final\acheo.onibus\acheoonibus\acheoonibus\acheoonibus.windows\obj\debug\intermediatexaml\acheoonibus.windows.exe" HashGuid="31d9314e-ac04-3bcb-c9db-287878b01c1f" />
+    <ReferenceAssembly PathName="w:\senai - s2b\projeto final\acheo.onibus\acheoonibus\packages\newtonsoft.json.6.0.8\lib\netcore45\newtonsoft.json.dll" HashGuid="fd3dfcab-cf69-c796-78a2-2423dadb814b" />
   </ReferenceAssemblyList>
 </XamlCompilerSaveState>
