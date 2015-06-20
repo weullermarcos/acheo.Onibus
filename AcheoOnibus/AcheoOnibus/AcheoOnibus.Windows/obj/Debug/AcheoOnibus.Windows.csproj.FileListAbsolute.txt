@@ -94,3 +94,12 @@ C:\Users\weuller.marcos\Desktop\acheo.Onibus\AcheoOnibus\AcheoOnibus\AcheoOnibus
 C:\Users\weuller.marcos\Desktop\acheo.Onibus\AcheoOnibus\AcheoOnibus\AcheoOnibus.Windows\obj\Debug\qualifiers.txt.intermediate
 C:\Users\weuller.marcos\Desktop\acheo.Onibus\AcheoOnibus\AcheoOnibus\AcheoOnibus.Windows\obj\Debug\MultipleQualifiersPerDimensionFound.txt
 C:\Users\weuller.marcos\Desktop\acheo.Onibus\AcheoOnibus\AcheoOnibus\AcheoOnibus.Windows\obj\Debug\ProjectArchitectures.txt
+W:\SENAI - S2B\Projeto Final\acheo.Onibus\AcheoOnibus\AcheoOnibus\AcheoOnibus.Windows\bin\Debug\MapPage.xbf
+W:\SENAI - S2B\Projeto Final\acheo.Onibus\AcheoOnibus\AcheoOnibus\AcheoOnibus.Windows\bin\Debug\Newtonsoft.Json.dll
+W:\SENAI - S2B\Projeto Final\acheo.Onibus\AcheoOnibus\AcheoOnibus\AcheoOnibus.Windows\bin\Debug\Newtonsoft.Json.xml
+W:\SENAI - S2B\Projeto Final\acheo.Onibus\AcheoOnibus\AcheoOnibus\AcheoOnibus.Windows\obj\Debug\AcheoOnibus.Windows.csprojResolveAssemblyReference.cache
+W:\SENAI - S2B\Projeto Final\acheo.Onibus\AcheoOnibus\AcheoOnibus\AcheoOnibus.Windows\obj\Debug\MapPage.g.i.cs
+W:\SENAI - S2B\Projeto Final\acheo.Onibus\AcheoOnibus\AcheoOnibus\AcheoOnibus.Windows\obj\Debug\MapPage.g.cs
+W:\SENAI - S2B\Projeto Final\acheo.Onibus\AcheoOnibus\AcheoOnibus\AcheoOnibus.Windows\obj\Debug\MapPage.xaml
+W:\SENAI - S2B\Projeto Final\acheo.Onibus\AcheoOnibus\AcheoOnibus\AcheoOnibus.Windows\obj\Debug\MapPage.xbf
+W:\SENAI - S2B\Projeto Final\acheo.Onibus\AcheoOnibus\AcheoOnibus\AcheoOnibus.Windows\obj\Debug\AcheoOnibus.Windows.csproj.GenerateResource.Cache
