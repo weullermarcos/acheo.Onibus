@@ -34,8 +34,9 @@ namespace AcheoOnibus
         public MainPage()
         {
             this.InitializeComponent();
-
             this.NavigationCacheMode = NavigationCacheMode.Required;
+
+            ComboBox cmbSelection = buscarControleFilho<ComboBox>(hubControl, "cmbSelection") as ComboBox;
 
             listaDeItinerarios = getItinerario();
 
@@ -111,6 +112,9 @@ namespace AcheoOnibus
 
         private void cmbSelection_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            Button btnSend = buscarControleFilho<Button>(hubControl, "btnSend") as Button;
+            ComboBox cmbSentidoViagem = buscarControleFilho<ComboBox>(hubControl, "cmbSentidoViagem") as ComboBox;
+
             cmbSentidoViagem.Items.Clear();
             dicionarioSentidoViagem.Clear();
             btnSend.IsEnabled = false;
@@ -135,8 +139,9 @@ namespace AcheoOnibus
             cmbSentidoViagem.IsEnabled = true;
         }
 
-        private int getIdItinerarioSelecionado() 
+        private int getIdItinerarioSelecionado()
         {
+            ComboBox cmbSelection = buscarControleFilho<ComboBox>(hubControl, "cmbSelection") as ComboBox;
             foreach (Itinerario itinerario in listaDeItinerarios)
             {
                 if (itinerario.numero == cmbSelection.SelectedItem.ToString())
@@ -150,6 +155,9 @@ namespace AcheoOnibus
 
         private void btnSend_Click_1(object sender, RoutedEventArgs e)
         {
+            ComboBox cmbSelection = buscarControleFilho<ComboBox>(hubControl, "cmbSelection") as ComboBox;
+            ComboBox cmbSentidoViagem = buscarControleFilho<ComboBox>(hubControl, "cmbSentidoViagem") as ComboBox;
+
             List<object> listaDeParametros = new List<object>();
 
             listaDeParametros.Add(cmbSelection.SelectedItem.ToString());
@@ -168,7 +176,39 @@ namespace AcheoOnibus
 
         private void cmbSentidoViagem_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            Button btnSend = buscarControleFilho<Button>(hubControl, "btnSend") as Button;
             btnSend.IsEnabled = true;
         }
+
+        private DependencyObject buscarControleFilho<T>(DependencyObject controle, string controleFilho) 
+        {
+            int childNumber = VisualTreeHelper.GetChildrenCount(controle);
+            for (int i = 0; i < childNumber; i++)
+            {
+                DependencyObject child = VisualTreeHelper.GetChild(controle, i);
+                FrameworkElement fe = child as FrameworkElement;
+                // Not a framework element or is null
+                if (fe == null) return null;
+
+                if (child is T && fe.Name == controleFilho)
+                {
+                    // Found the control so return
+                    return child;
+                }
+                else
+                {
+                    // Not found it - search children
+                    DependencyObject nextLevel = buscarControleFilho<T>(child, controleFilho);
+                    if (nextLevel != null)
+                        return nextLevel;
+                }
+            }
+            return null;
+        }
+
+        //private DependencyObject BuscarControleFilho<T>(DependencyObject controle, string controleFilho)
+        //{
+
+        //}
     }
 }

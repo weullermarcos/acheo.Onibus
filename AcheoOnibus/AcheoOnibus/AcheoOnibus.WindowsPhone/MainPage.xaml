@@ -8,9 +8,73 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <Grid>
-        <Button x:Name="btnSend" Content="Enviar" HorizontalAlignment="Left" Margin="131,385,0,0" VerticalAlignment="Top" Click="btnSend_Click_1" IsEnabled="False"/>
-        <ComboBox x:Name="cmbSelection" HorizontalAlignment="Left" Margin="40,64,0,0" VerticalAlignment="Top" Width="314" PlaceholderText="Selecione o itinerário" SelectionChanged="cmbSelection_SelectionChanged"/>
-        <ComboBox x:Name="cmbSentidoViagem" HorizontalAlignment="Left" Margin="40,193,0,0" VerticalAlignment="Top" Width="314" PlaceholderText="Selecione o sentido da viagem" SelectionChanged="cmbSentidoViagem_SelectionChanged" IsEnabled="False"/>
+    <Grid Background="Teal">
+        <Hub x:Name="hubControl" Header="Acheo.Onibus">
+            <HubSection Header="Página inicial" Width="375">
+                <DataTemplate>
+                    <Grid>
+                        <Button x:Name="btnSend" Content="Enviar" HorizontalAlignment="Left" Margin="101,385,0,0" VerticalAlignment="Top" Click="btnSend_Click_1" IsEnabled="False"/>
+                        <ComboBox x:Name="cmbSelection" HorizontalAlignment="Left" Margin="10,64,0,0" VerticalAlignment="Top" Width="314" PlaceholderText="Selecione o itinerário" SelectionChanged="cmbSelection_SelectionChanged"/>
+                        <ComboBox x:Name="cmbSentidoViagem" HorizontalAlignment="Left" Margin="10,193,0,0" VerticalAlignment="Top" Width="314" PlaceholderText="Selecione o sentido da viagem" SelectionChanged="cmbSentidoViagem_SelectionChanged" IsEnabled="False"/>
+                    </Grid>
+                </DataTemplate>
+            </HubSection>
+            <HubSection Header="Instruções de Uso:" Width="400">
+                <DataTemplate>
+                    <Grid>
+                        <TextBlock HorizontalAlignment="Left" Margin="0,0,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="445" Width="380" FontSize="26" FontWeight="Bold">
+        	                <Run Text="1º Passo:"/>
+        	                <Run Text="Selecione um itinerário."/>
+        	                <LineBreak/>
+        	                <Run/>
+        	                <LineBreak/>
+        	                <Run Text="2º Passo"/>
+        	                <Run Text=": "/>
+        	                <Run Text="Selecione "/>
+        	                <Run Text="o"/>
+        	                <Run Text=" sentido da viagem."/>
+        	                <LineBreak/>
+        	                <Run/>
+        	                <Run/>
+        	                <LineBreak/>
+        	                <Run Text="3º Passo: Clique em enviar."/>
+        	                <LineBreak/>
+        	                <Run/>
+        	                <LineBreak/>
+        	                <Run Text="4º Passo: receba atualizações em tempo real do ônibus selecionado."/>
+                        </TextBlock>
+                    </Grid>
+                </DataTemplate>
+            </HubSection>
+            <HubSection Header="Sobre:" Width="400">
+                <DataTemplate>
+                    <Grid>
+                        <TextBlock HorizontalAlignment="Left" Margin="0,0,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="445" Width="380" FontSize="26" FontWeight="Bold">
+        	                <Run Text="App Desenvolvida com apoio do MIC DF. "/>
+        	                <LineBreak/>
+        	                <Run/>
+        	                <LineBreak/>
+        	                <Run/>
+        	                <LineBreak/>
+        	                <Run FontSize="24" Text="Programa Microsoft S2B "/>
+        	                <LineBreak/>
+        	                <Run FontSize="24" Text="1º/2015."/>
+        	                <LineBreak/>
+        	                <Run/>
+        	                <LineBreak/>
+        	                <Run/>
+        	                <LineBreak/>
+        	                <Run Text="Desenvolvedores:"/>
+        	                <LineBreak/>
+        	                <Run FontSize="22" Text="Ismael Mendonça"/>
+        	                <Run FontSize="22" Text=" - Engenheiro de Computação."/>
+        	                <LineBreak/>
+        	                <Run FontSize="22" Text="Weulller marcos"/>
+        	                <Run FontSize="22" Text="   - Engenheiro de Computação."/>
+                        </TextBlock>
+                    </Grid>
+                </DataTemplate>
+            </HubSection>
+        </Hub>
     </Grid>
 </Page>
