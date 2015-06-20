@@ -30,6 +30,12 @@ namespace AcheoOnibus
     /// </summary>
     public sealed partial class MapPage : Page
     {
+        const double SLIDER_ZOOM_INICIAL = 18.0;
+        const int INTERVAL_HOR = 0;
+        const int INTERVAL_MIN = 0;
+        const int INTERVAL_SEG = 5;
+        const double DELAY_SEG = 2;
+
         public Geopoint posicao { get; set; }
 
         string itinerario;
@@ -61,7 +67,31 @@ namespace AcheoOnibus
                 sentidoViagem = Convert.ToInt32(listaDeParametros[1].ToString());
             }
 
-            RecuperaPosicaoAtual();
+            recuperaPosicaoAtual();
+        }
+
+        private void sldEixoY_ValueChanged(object sender, RangeBaseValueChangedEventArgs e)
+        {
+            if (sldEixoY != null)
+            {
+                MostrarPosicao(posicao);
+            }
+        }
+
+        private void sldEixoX_ValueChanged(object sender, RangeBaseValueChangedEventArgs e)
+        {
+            if (sldEixoX != null)
+            {
+                MostrarPosicao(posicao);
+            }
+        }
+
+        private void sldZoom_ValueChanged(object sender, RangeBaseValueChangedEventArgs e)
+        {
+            if (sldZoom != null)
+            {
+                MostrarPosicao(posicao);
+            }
         }
 
         private async void ExibirMensagem(string titulo, string mensagem)
@@ -115,7 +145,6 @@ namespace AcheoOnibus
             }
             catch (Exception err)
             {
-                //ExibirMensagem("Erro!", err.Message);
                 Frame.Navigate(typeof(MainPage), err.Message);
             }
         }
@@ -129,7 +158,6 @@ namespace AcheoOnibus
             if (mostraUsuario)
             {
                 icon.Title = "Eu";
-                //icon.Image = RandomAccessStreamReference.CreateFromUri(new Uri("ms-appx:///Assets/user_1.png"));
                 icon.Image = RandomAccessStreamReference.CreateFromUri(new Uri("ms-appx:///Assets/user_2.png"));
             }
             else
@@ -139,81 +167,50 @@ namespace AcheoOnibus
             }
 
             mapFindBus.MapElements.Add(icon);
-            //mapFindBus.MapElements.Remove(icon);
         }
 
         private async void MostrarPosicao(Geopoint posicao)
         {
-            if (sldZoom.Value == 0)
+            try
             {
-                sldZoom.Value = 1;
+                mapFindBus.Style = Windows.UI.Xaml.Controls.Maps.MapStyle.Road;
+                await mapFindBus.TrySetViewAsync(posicao, sldZoom.Value, sldEixoX.Value, sldEixoY.Value, MapAnimationKind.Bow);
+                //await mapFindBus.Focus();
             }
-
-            mapFindBus.Style = Windows.UI.Xaml.Controls.Maps.MapStyle.Road;
-            await mapFindBus.TrySetViewAsync(posicao, sldZoom.Value, sldEixoX.Value, sldEixoY.Value, MapAnimationKind.Bow);
-
-
-            //position = new Geopoint(new BasicGeoposition() { Latitude = -15.823127, Longitude = -47.9208744 });
-            //position = new Geopoint(new BasicGeoposition() { Latitude = location.latitude, Longitude = location.longitude });
-            //try
-            //{
-            //    //mapFindBus.Style = Windows.UI.Xaml.Controls.Maps.MapStyle.AerialWithRoads;
-            //    mapFindBus.Style = Windows.UI.Xaml.Controls.Maps.MapStyle.Road;
-
-            //    await mapFindBus.TrySetViewAsync(posicao, 18.0, 0, 0, Windows.UI.Xaml.Controls.Maps.MapAnimationKind.Bow);
-            //}
-            //catch (Exception)
-            //{
-
-            //    throw;
-            //}
+            catch (Exception)
+            {
+                Frame.Navigate(typeof(MainPage), "Erro! Não foi possível mostrar a posição!");
+            }
         }
 
-        private async void RecuperaPosicaoAtual()
+        private async void sleep(double seconds)
+        {
+            await System.Threading.Tasks.Task.Delay(TimeSpan.FromSeconds(seconds));
+        }  
+        
+        private void iniciarContador()
+        {
+            contador.Tick += getPosicaoAtualOnibus;
+            contador.Interval = new TimeSpan(INTERVAL_HOR, INTERVAL_MIN, INTERVAL_SEG);
+            contador.Start();
+        }
+
+        private async void recuperaPosicaoAtual()
         {
             Geolocator g = new Geolocator();
             Geoposition gp = await g.GetGeopositionAsync();
             posicao = new Geopoint(new BasicGeoposition() { Latitude = gp.Coordinate.Point.Position.Latitude, Longitude = gp.Coordinate.Point.Position.Longitude });
-            sldZoom.Value = 18.0;
+            
+            mapFindBus.Center = posicao;
+
+            sldZoom.Value = SLIDER_ZOOM_INICIAL;
+
             AddMapIcon(posicao);
             MostrarPosicao(posicao);
-            await System.Threading.Tasks.Task.Delay(TimeSpan.FromSeconds(5));
+
+            sleep(DELAY_SEG);
+
             iniciarContador();
-        }
-
-        private void iniciarContador()
-        {
-            contador.Tick += getPosicaoAtualOnibus;
-            contador.Interval = new TimeSpan(0, 0, 5);
-            contador.Start();
-        }
-
-        private void sldEixoY_ValueChanged(object sender, RangeBaseValueChangedEventArgs e)
-        {
-            if (sldEixoY != null)
-            {
-                MostrarPosicao(posicao); 
-            }
-            
-            //mapFindBus.DesiredPitch = sldEixoY.Value;
-        }
-
-        private void sldEixoX_ValueChanged(object sender, RangeBaseValueChangedEventArgs e)
-        {
-            if (sldEixoX != null)
-            {
-                MostrarPosicao(posicao);
-            }
-            //mapFindBus.DesiredPitch = sldEixoX.Value;
-        }
-
-        private void sldZoom_ValueChanged(object sender, RangeBaseValueChangedEventArgs e)
-        {
-            if (sldZoom != null)
-            {
-                MostrarPosicao(posicao);
-            }
-            //mapFindBus.DesiredPitch = sldZoom.Value;
         }
     }
 }
