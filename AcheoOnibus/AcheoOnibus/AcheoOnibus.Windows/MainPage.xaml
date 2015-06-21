@@ -14,7 +14,7 @@
                     <DataTemplate>
                         <Grid>
                             <Button x:Name="btnSend" Content="Enviar" HorizontalAlignment="Left" Margin="101,385,0,0" VerticalAlignment="Top" IsEnabled="False" Click="btnSend_Click_1"/>
-                            <ComboBox x:Name="cmbSelection" HorizontalAlignment="Left" Margin="10,64,0,0" VerticalAlignment="Top" Width="314" PlaceholderText="Selecione o itinerário" SelectionChanged="cmbSelection_SelectionChanged"/>
+                            <ComboBox x:Name="cmbSelection" HorizontalAlignment="Left" Margin="10,64,0,0" VerticalAlignment="Top" Width="314" PlaceholderText="Selecione o itinerário" SelectionChanged="cmbSelection_SelectionChanged" Loaded="cmbSelection_Loaded"/>
                             <ComboBox x:Name="cmbSentidoViagem" HorizontalAlignment="Left" Margin="10,193,0,0" VerticalAlignment="Top" Width="314" PlaceholderText="Selecione o sentido da viagem" IsEnabled="False" SelectionChanged="cmbSentidoViagem_SelectionChanged"/>
                         </Grid>
                     </DataTemplate>

@@ -34,18 +34,7 @@ namespace AcheoOnibus
         public MainPage()
         {
             this.InitializeComponent();
-
-            ComboBox cmbSelection = buscarControleFilho<ComboBox>(hubControl, "cmbSelection") as ComboBox;
-
-            listaDeItinerarios = getItinerario();
-
-            if (listaDeItinerarios != null && listaDeItinerarios.Count > 0)
-            {
-                foreach (Itinerario itinerary in listaDeItinerarios)
-                {
-                    cmbSelection.Items.Add(itinerary.numero);
-                }
-            }
+            this.NavigationCacheMode = NavigationCacheMode.Required;
         }
 
         private List<Itinerario> getItinerario()
@@ -89,26 +78,22 @@ namespace AcheoOnibus
             var dialog = new MessageDialog(mensagem, titulo);
             dialog.Commands.Add(new UICommand("OK"));
             await dialog.ShowAsync();
-
-            //ContentDialog d = new ContentDialog();
-            //d.Title = titulo;
-            //d.Content = mensagem;
-            //d.PrimaryButtonText = "Ok";
-            //await d.ShowAsync();
         }
-
 
         private int getIdItinerarioSelecionado()
         {
             ComboBox cmbSelection = buscarControleFilho<ComboBox>(hubControl, "cmbSelection") as ComboBox;
-            foreach (Itinerario itinerario in listaDeItinerarios)
+
+            if (listaDeItinerarios != null && listaDeItinerarios.Count > 0)
             {
-                if (itinerario.numero == cmbSelection.SelectedItem.ToString())
+                foreach (Itinerario itinerario in listaDeItinerarios)
                 {
-                    return itinerario.idItinerario;
+                    if (itinerario.numero == cmbSelection.SelectedItem.ToString())
+                    {
+                        return itinerario.idItinerario;
+                    }
                 }
             }
-
             return 0;
         }
 
@@ -191,6 +176,25 @@ namespace AcheoOnibus
                 }
             }
             return null;
+        }
+
+        private void cmbSelection_Loaded(object sender, RoutedEventArgs e)
+        {
+            ComboBox cmbSelection = buscarControleFilho<ComboBox>(hubControl, "cmbSelection") as ComboBox;
+            ComboBox cmbSentidoViagem = buscarControleFilho<ComboBox>(hubControl, "cmbSentidoViagem") as ComboBox;
+
+            listaDeItinerarios.Clear();
+            cmbSelection.Items.Clear();
+            cmbSentidoViagem.IsEnabled = false;
+            listaDeItinerarios = getItinerario();
+
+            if (listaDeItinerarios != null && listaDeItinerarios.Count > 0)
+            {
+                foreach (Itinerario itinerary in listaDeItinerarios)
+                {
+                    cmbSelection.Items.Add(itinerary.numero);
+                }
+            }
         }
     }
 }

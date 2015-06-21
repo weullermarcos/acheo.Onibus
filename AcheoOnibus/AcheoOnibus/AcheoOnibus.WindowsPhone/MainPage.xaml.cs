@@ -7,6 +7,7 @@ using System.Net.Http;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.Phone.UI.Input;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -34,18 +35,22 @@ namespace AcheoOnibus
         public MainPage()
         {
             this.InitializeComponent();
+            HardwareButtons.BackPressed += HardwareButtons_BackPressed;
             this.NavigationCacheMode = NavigationCacheMode.Required;
+        }
 
-            ComboBox cmbSelection = buscarControleFilho<ComboBox>(hubControl, "cmbSelection") as ComboBox;
-
-            listaDeItinerarios = getItinerario();
-
-            if (listaDeItinerarios != null && listaDeItinerarios.Count > 0)
+        void HardwareButtons_BackPressed(object sender, BackPressedEventArgs e)
+        {
+            Frame frame = Window.Current.Content as Frame;
+            if (frame == null)
             {
-                foreach (Itinerario itinerary in listaDeItinerarios)
-                {
-                    cmbSelection.Items.Add(itinerary.numero);
-                }
+                return;
+            }
+
+            if (frame.CanGoBack)
+            {
+                frame.GoBack();
+                e.Handled = true;
             }
         }
 
@@ -114,14 +119,17 @@ namespace AcheoOnibus
         private int getIdItinerarioSelecionado()
         {
             ComboBox cmbSelection = buscarControleFilho<ComboBox>(hubControl, "cmbSelection") as ComboBox;
-            foreach (Itinerario itinerario in listaDeItinerarios)
+
+            if (listaDeItinerarios != null && listaDeItinerarios.Count > 0) 
             {
-                if (itinerario.numero == cmbSelection.SelectedItem.ToString())
+                foreach (Itinerario itinerario in listaDeItinerarios)
                 {
-                    return itinerario.idItinerario;
+                    if (itinerario.numero == cmbSelection.SelectedItem.ToString())
+                    {
+                        return itinerario.idItinerario;
+                    }
                 }
             }
-
             return 0;
         }
 
@@ -204,6 +212,25 @@ namespace AcheoOnibus
                 }
             }
             return null;
+        }
+
+        private void cmbSelection_Loaded(object sender, RoutedEventArgs e)
+        {
+            ComboBox cmbSelection = buscarControleFilho<ComboBox>(hubControl, "cmbSelection") as ComboBox;
+            ComboBox cmbSentidoViagem = buscarControleFilho<ComboBox>(hubControl, "cmbSentidoViagem") as ComboBox;
+
+            listaDeItinerarios.Clear();
+            cmbSelection.Items.Clear();
+            cmbSentidoViagem.IsEnabled = false;
+            listaDeItinerarios = getItinerario();
+
+            if (listaDeItinerarios != null && listaDeItinerarios.Count > 0)
+            {
+                foreach (Itinerario itinerary in listaDeItinerarios)
+                {
+                    cmbSelection.Items.Add(itinerary.numero);
+                }
+            }
         }
     }
 }
