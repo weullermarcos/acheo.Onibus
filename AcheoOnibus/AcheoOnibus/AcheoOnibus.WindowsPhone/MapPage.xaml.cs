@@ -37,11 +37,14 @@ namespace AcheoOnibus
         const double DELAY_SEG = 2;
 
         public Geopoint posicao { get; set; }
+        public Geopoint centroAtualDoMapa { get; set; }
+        public MapIcon iconeAntigo { get; set; }
+
 
         string itinerario;
         int sentidoViagem;
         bool mostraUsuario = true;
-        List<Onibus> listaOnibus = new List<Onibus>();
+        List<Onibus> listaFiltradaOnibus = new List<Onibus>();
         DispatcherTimer contador = new DispatcherTimer();
 
         public MapPage()
@@ -94,47 +97,38 @@ namespace AcheoOnibus
             }
         }
 
-        private async void ExibirMensagem(string titulo, string mensagem)
-        {
-            ContentDialog d = new ContentDialog();
-            d.Title = titulo;
-            d.Content = mensagem;
-            d.PrimaryButtonText = "Ok";
-            await d.ShowAsync();
-        }
-
         private void getPosicaoAtualOnibus(object sender, object e)
         {
-            listaOnibus.Clear();
+            listaFiltradaOnibus.Clear();
             try
             {
                 HttpClient cliente = new HttpClient();
                 HttpResponseMessage resposta = cliente.GetAsync("http://localhost:1916/api/Onibus").Result;
                 HttpContent stream = resposta.Content;
                 var resultadoLista = stream.ReadAsStringAsync();
-                List<Onibus> listOnibus = JsonConvert.DeserializeObject<List<Onibus>>(resultadoLista.Result);
+                List<Onibus> listaTodosOnibus = JsonConvert.DeserializeObject<List<Onibus>>(resultadoLista.Result);
 
-                if (listOnibus == null)
+                if (listaTodosOnibus == null)
                 {
                     contador.Stop();
                     throw new ArgumentException("Erro ao receber dados!");
                 }
 
-                foreach (Onibus onibus in listOnibus)
+                foreach (Onibus onibus in listaTodosOnibus)
                 {
                     if (onibus.numero == itinerario && onibus.sentidoViagem == sentidoViagem)
                     {
-                        listaOnibus.Add(onibus);
+                        listaFiltradaOnibus.Add(onibus);
                     }
                 }
 
-                if (listOnibus == null)
+                if (listaFiltradaOnibus == null)
                 {
                     contador.Stop();
                     throw new ArgumentException("Erro! Ônibus não encontrado para o itinerário e sentido de viagem informados!");
                 }
 
-                foreach (Onibus onibus in listaOnibus)
+                foreach (Onibus onibus in listaFiltradaOnibus)
                 {
                     mostraUsuario = false;
                     posicao = new Geopoint(new BasicGeoposition() { Latitude = Convert.ToDouble(onibus.latitude), Longitude = Convert.ToDouble(onibus.longitude) });
@@ -151,31 +145,43 @@ namespace AcheoOnibus
 
         private void AddMapIcon(Geopoint point)
         {
-            MapIcon icon = new MapIcon();
-            icon.Location = point;
-            icon.NormalizedAnchorPoint = new Point(0.0, 0.0);
+            MapIcon novoIcone = new MapIcon();
+            novoIcone.Location = point;
+            novoIcone.NormalizedAnchorPoint = new Point(0.0, 0.0);
             
             if (mostraUsuario)
             {
-                icon.Title = "Eu";
-                icon.Image = RandomAccessStreamReference.CreateFromUri(new Uri("ms-appx:///Assets/user_2.png"));
+                novoIcone.Title = "Eu";
+                novoIcone.Image = RandomAccessStreamReference.CreateFromUri(new Uri("ms-appx:///Assets/user_2.png"));
             }
             else
             {
-                icon.Title = itinerario;
-                icon.Image = RandomAccessStreamReference.CreateFromUri(new Uri("ms-appx:///Assets/bus.png"));
+                novoIcone.Title = itinerario;
+                novoIcone.Image = RandomAccessStreamReference.CreateFromUri(new Uri("ms-appx:///Assets/bus.png"));
             }
 
-            mapFindBus.MapElements.Add(icon);
+            if (iconeAntigo != null || mostraUsuario == false)
+            {
+                mapFindBus.MapElements.Remove(iconeAntigo);
+                iconeAntigo = novoIcone;
+            }
+
+            mapFindBus.MapElements.Add(novoIcone);
+
         }
 
         private async void MostrarPosicao(Geopoint posicao)
         {
             try
             {
+                if (centroAtualDoMapa == null)
+                {
+                    centroAtualDoMapa = posicao;
+                }
+
                 mapFindBus.Style = Windows.UI.Xaml.Controls.Maps.MapStyle.Road;
-                await mapFindBus.TrySetViewAsync(posicao, sldZoom.Value, sldEixoX.Value, sldEixoY.Value, MapAnimationKind.Bow);
-                //await mapFindBus.Focus();
+                //await mapFindBus.TrySetViewAsync(posicao, sldZoom.Value, sldEixoX.Value, sldEixoY.Value, MapAnimationKind.Bow);
+                await mapFindBus.TrySetViewAsync(centroAtualDoMapa, sldZoom.Value, sldEixoX.Value, sldEixoY.Value, MapAnimationKind.Bow);
             }
             catch (Exception)
             {
@@ -199,9 +205,10 @@ namespace AcheoOnibus
         {
             Geolocator g = new Geolocator();
             Geoposition gp = await g.GetGeopositionAsync();
-            posicao = new Geopoint(new BasicGeoposition() { Latitude = gp.Coordinate.Point.Position.Latitude, Longitude = gp.Coordinate.Point.Position.Longitude });
-            
-            mapFindBus.Center = posicao;
+            //posicao = new Geopoint(new BasicGeoposition() { Latitude = gp.Coordinate.Point.Position.Latitude, Longitude = gp.Coordinate.Point.Position.Longitude });
+            posicao = new Geopoint(new BasicGeoposition() { Latitude = -15.793257, Longitude = -47.883268 });
+     
+            //mapFindBus.Center = posicao;
 
             sldZoom.Value = SLIDER_ZOOM_INICIAL;
 
@@ -211,6 +218,11 @@ namespace AcheoOnibus
             sleep(DELAY_SEG);
 
             iniciarContador();
+        }
+
+        private void mapFindBus_CenterChanged(MapControl sender, object args)
+        {
+            centroAtualDoMapa = mapFindBus.Center;
         }
     }
 }
