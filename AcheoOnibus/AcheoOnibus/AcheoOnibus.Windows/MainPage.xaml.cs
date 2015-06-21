@@ -37,7 +37,7 @@ namespace AcheoOnibus
 
             ComboBox cmbSelection = buscarControleFilho<ComboBox>(hubControl, "cmbSelection") as ComboBox;
 
-            //listaDeItinerarios = getItinerario();
+            listaDeItinerarios = getItinerario();
 
             if (listaDeItinerarios != null && listaDeItinerarios.Count > 0)
             {
@@ -62,7 +62,7 @@ namespace AcheoOnibus
             catch (Exception)
             {
                 exibirMensagem("Erro", "Erro ao buscar itinerários.");
-                throw;
+                return null;
             }
         }
 
@@ -80,7 +80,7 @@ namespace AcheoOnibus
             catch (Exception)
             {
                 exibirMensagem("Erro", "Erro ao buscar viagens.");
-                throw;
+                return null;
             }
         }
 

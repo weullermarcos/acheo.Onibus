@@ -2,3 +2,10 @@ http://www.c-sharpcorner.com/UploadFile/890595/the-complete-reference-of-map-con
 
 Pode ser a solução do zoom no mapa:
 http://dotnetbyexample.blogspot.com.br/2014/08/querying-windows-phone-81-map-when.html
+
+
+
+Usar este link para instalar o SDK do Bing Maps:
+https://msdn.microsoft.com/en-us/library/dn456475.aspx
+
+Importante, quando terminar mudar de Any CPU para x86 ou x64 para remover os erros

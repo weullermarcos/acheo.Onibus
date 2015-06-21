@@ -79,7 +79,7 @@ namespace AcheoOnibus
             catch (Exception)
             {
                 exibirMensagem("Erro", "Erro ao buscar itinerários.");
-                throw;
+                return null;
             }
         }
 
@@ -97,7 +97,7 @@ namespace AcheoOnibus
             catch (Exception)
             {
                 exibirMensagem("Erro", "Erro ao buscar viagens.");
-                throw;
+                return null;
             }
         }
 
