@@ -142,6 +142,10 @@ namespace AcheoOnibus
                     }
                 }
 
+                txbTarifa.Text = onibusMaisProximo.tarifa.ToString();
+                txbOnibusSelecionado.Text = onibusMaisProximo.numero.ToString();
+                txbTempoChegada.Text = onibusMaisProximo.placa.ToString();
+
                 posicao = new Geopoint(new BasicGeoposition() { Latitude = Convert.ToDouble(onibusMaisProximo.latitude), Longitude = Convert.ToDouble(onibusMaisProximo.longitude) });
 
                 return posicao;
