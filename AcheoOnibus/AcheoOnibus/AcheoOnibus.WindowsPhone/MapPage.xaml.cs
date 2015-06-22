@@ -37,6 +37,7 @@ namespace AcheoOnibus
         const double DELAY_SEG = 2;
 
         public Geopoint posicao { get; set; }
+        public Geopoint posicaoAtualUsuario { get; set; }
         public Geopoint centroAtualDoMapa { get; set; }
         public MapIcon iconeAntigo { get; set; }
 
@@ -97,6 +98,61 @@ namespace AcheoOnibus
             }
         }
 
+
+        private double CalcularDistancia(double origem_lat, double origem_lng, double destino_lat, double destino_lng)
+        {
+            double x1 = origem_lat;
+            double x2 = destino_lat;
+            double y1 = origem_lng;
+            double y2 = destino_lng;
+
+            double c = 90 - (y2);
+            double b = 90 - (y1);
+            double a = x2 - x1;
+
+            // Formula: cos(a) = cos(b) * cos(c) + sen(b)* sen(c) * cos(A) 
+            double cos_a = Math.Cos(b) * Math.Cos(c) + Math.Sin(c) * Math.Sin(b) * Math.Cos(a);
+            double arc_cos = Math.Acos(cos_a);
+            double distancia = (40030 * arc_cos) / 360;
+
+            return distancia;
+        }
+
+        private Geopoint getOnibusMaisProximo()
+        {
+            Dictionary<Onibus, double> dicionarioOnibusDistancias = new Dictionary<Onibus, double>();
+            double distancia = 0;
+            Onibus onibusMaisProximo = new Onibus();
+
+            try
+            {
+                foreach (Onibus onibus in listaFiltradaOnibus)
+                {
+                    posicao = new Geopoint(new BasicGeoposition() { Latitude = Convert.ToDouble(onibus.latitude), Longitude = Convert.ToDouble(onibus.longitude) });
+                    distancia = CalcularDistancia(posicaoAtualUsuario.Position.Latitude, posicaoAtualUsuario.Position.Longitude, Convert.ToDouble(onibus.latitude), Convert.ToDouble(onibus.longitude));
+                    dicionarioOnibusDistancias.Add(onibus, distancia);
+                }
+
+                foreach (KeyValuePair<Onibus, double> onibusDistancia in dicionarioOnibusDistancias)
+                {
+                    if (onibusDistancia.Value <= distancia)
+                    {
+                        distancia = onibusDistancia.Value;
+                        onibusMaisProximo = onibusDistancia.Key;
+                    }
+                }
+
+                posicao = new Geopoint(new BasicGeoposition() { Latitude = Convert.ToDouble(onibusMaisProximo.latitude), Longitude = Convert.ToDouble(onibusMaisProximo.longitude) });
+
+                return posicao;
+            }
+            catch (Exception)
+            {
+
+                return null;
+            }
+        }
+
         private void getPosicaoAtualOnibus(object sender, object e)
         {
             listaFiltradaOnibus.Clear();
@@ -128,12 +184,10 @@ namespace AcheoOnibus
                     throw new ArgumentException("Erro! Ônibus não encontrado para o itinerário e sentido de viagem informados!");
                 }
 
-                foreach (Onibus onibus in listaFiltradaOnibus)
-                {
-                    mostraUsuario = false;
-                    posicao = new Geopoint(new BasicGeoposition() { Latitude = Convert.ToDouble(onibus.latitude), Longitude = Convert.ToDouble(onibus.longitude) });
-                    AddMapIcon(posicao);
-                }
+                mostraUsuario = false;
+
+                posicao = getOnibusMaisProximo();
+                AddMapIcon(posicao);
 
                 MostrarPosicao(posicao);
             }
@@ -170,17 +224,17 @@ namespace AcheoOnibus
 
         }
 
-        private async void MostrarPosicao(Geopoint posicao)
+        private async void MostrarPosicao(Geopoint posicaoRecebida)
         {
             try
             {
                 if (centroAtualDoMapa == null)
                 {
-                    centroAtualDoMapa = posicao;
+                    centroAtualDoMapa = posicaoRecebida;
                 }
 
                 mapFindBus.Style = Windows.UI.Xaml.Controls.Maps.MapStyle.Road;
-                //await mapFindBus.TrySetViewAsync(posicao, sldZoom.Value, sldEixoX.Value, sldEixoY.Value, MapAnimationKind.Bow);
+                //await mapFindBus.TrySetViewAsync(posicaoRecebida, sldZoom.Value, sldEixoX.Value, sldEixoY.Value, MapAnimationKind.Bow);
                 await mapFindBus.TrySetViewAsync(centroAtualDoMapa, sldZoom.Value, sldEixoX.Value, sldEixoY.Value, MapAnimationKind.Bow);
             }
             catch (Exception)
@@ -207,8 +261,8 @@ namespace AcheoOnibus
             Geoposition gp = await g.GetGeopositionAsync();
             //posicao = new Geopoint(new BasicGeoposition() { Latitude = gp.Coordinate.Point.Position.Latitude, Longitude = gp.Coordinate.Point.Position.Longitude });
             posicao = new Geopoint(new BasicGeoposition() { Latitude = -15.793257, Longitude = -47.883268 });
-     
-            //mapFindBus.Center = posicao;
+
+            posicaoAtualUsuario = posicao;
 
             sldZoom.Value = SLIDER_ZOOM_INICIAL;
 
