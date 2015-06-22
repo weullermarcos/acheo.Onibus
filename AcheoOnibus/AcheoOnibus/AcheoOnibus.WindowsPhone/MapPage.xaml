@@ -9,7 +9,7 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <Grid>
+    <Grid Background="Teal">
         <Maps:MapControl x:Name="mapFindBus" HorizontalAlignment="Left" MapServiceToken="5q1-hsFTtQIO-oI9I2bT6g" Margin="10,11,0,0" VerticalAlignment="Top" Width="380" Height="516" CenterChanged="mapFindBus_CenterChanged"/>
         <Slider Name="sldEixoY" Margin="293,13,0,0" RenderTransformOrigin="0.435,0.499" Height="43" VerticalAlignment="Top" HorizontalAlignment="Left" Width="94" Minimum="0" Maximum="70" ValueChanged="sldEixoY_ValueChanged"/>
         <Slider Name="sldEixoX" Margin="291,481,0,0" RenderTransformOrigin="0.435,0.499" Height="43" VerticalAlignment="Top" HorizontalAlignment="Left" Width="94" Minimum="0" Maximum="180" ValueChanged="sldEixoX_ValueChanged"/>
