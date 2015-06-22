@@ -41,7 +41,9 @@ CREATE TABLE tblOnibus(
 	placa VARCHAR(8) NOT NULL UNIQUE,
 	latitude VARCHAR(255) NOT NULL,
 	longitude VARCHAR(255) NOT NULL,
-	numeroOnibus INT NOT NULL
+	numeroOnibus INT NOT NULL,
+	velocidade FLOAT NOT NULL,
+	sentidoViagem INT NOT NULL
 )
 GO
 
@@ -80,23 +82,10 @@ CREATE VIEW getViagens as
 GO
 
 CREATE VIEW getOnibus as
-	select i.numero, v.origem, v.destino, v.sentidoViagem, o.latitude, o.longitude, o.placa, o.numeroOnibus, i.tarifa, oi.data
+	select i.numero, o.sentidoViagem, o.latitude, o.longitude, o.velocidade, o.placa, o.numeroOnibus, i.tarifa, oi.data
 	from tblOnibusItinerario as oi
 	inner join tblOnibus o
 	on o.idOnibus = oi.idOnibusFK
 	inner join tblItinerario i
 	on i.idItinerario = oi.idItinerarioFK
-	inner join tblViagem v
-	on v.idItinerarioFK = oi.idItinerarioFK
 GO
-
-/*CREATE VIEW getItinerarios as 
-	select *
-	from tblItinerario i
-	inner join tblViagem v 
-	on i.idItinerario = v.idItinerarioFK
-GO*/
-
-/*CREATE VIEW getLastItinerario as
-	select TOP 1 *
-	from tblItinerario ORDER BY idItinerario DESC*/
