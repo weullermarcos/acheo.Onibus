@@ -11,16 +11,11 @@ namespace acheoOnibusAPI.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.Runtime.Serialization;
     
-    [DataContract]
     public partial class getItinerarios
     {
-        [DataMember]
         public int idItinerario { get; set; }
-        [DataMember]
         public decimal tarifa { get; set; }
-        [DataMember]
         public string numero { get; set; }
     }
 }

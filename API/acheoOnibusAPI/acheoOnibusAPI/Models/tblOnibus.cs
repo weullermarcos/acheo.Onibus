@@ -24,6 +24,8 @@ namespace acheoOnibusAPI.Models
         public string latitude { get; set; }
         public string longitude { get; set; }
         public int numeroOnibus { get; set; }
+        public double velocidade { get; set; }
+        public int sentidoViagem { get; set; }
     
         public virtual ICollection<tblOnibusItinerario> tblOnibusItinerario { get; set; }
     }

@@ -16,8 +16,8 @@ namespace acheoOnibusAPI.Models
     {
         public int idViagem { get; set; }
         public int sentidoViagem { get; set; }
-        public string destino { get; set; }
         public string origem { get; set; }
+        public string destino { get; set; }
         public int idItinerarioFK { get; set; }
     
         public virtual tblItinerario tblItinerario { get; set; }

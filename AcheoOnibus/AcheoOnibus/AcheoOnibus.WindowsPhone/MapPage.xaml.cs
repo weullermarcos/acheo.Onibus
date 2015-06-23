@@ -35,6 +35,7 @@ namespace AcheoOnibus
         const int INTERVAL_MIN = 0;
         const int INTERVAL_SEG = 5;
         const double DELAY_SEG = 2;
+        const float MINUTO = 60;
 
         public Geopoint posicao { get; set; }
         public Geopoint posicaoAtualUsuario { get; set; }
@@ -122,7 +123,9 @@ namespace AcheoOnibus
         {
             Dictionary<Onibus, double> dicionarioOnibusDistancias = new Dictionary<Onibus, double>();
             double distancia = 0;
+            double tempo = 0;
             Onibus onibusMaisProximo = new Onibus();
+            txbAvisos.Text = "";
 
             try
             {
@@ -144,7 +147,25 @@ namespace AcheoOnibus
 
                 txbTarifa.Text = onibusMaisProximo.tarifa.ToString();
                 txbOnibusSelecionado.Text = onibusMaisProximo.numero.ToString();
-                txbTempoChegada.Text = onibusMaisProximo.placa.ToString();
+
+                if (calcularTempoChegada(onibusMaisProximo.velocidade, distancia) < 1)
+                {
+                    tempo = calcularTempoChegada(onibusMaisProximo.velocidade, distancia) * 60;
+                    txbTempoChegada.Text = String.Format("{0:0.00}", tempo) + " segundo(s)";
+                    
+                    if(tempo < 5)
+                        txbAvisos.Text = "Ônibus muito próximo, visualização indisponível!";
+                }
+                else if (calcularTempoChegada(onibusMaisProximo.velocidade, distancia) > 60)
+                {
+                    tempo = calcularTempoChegada(onibusMaisProximo.velocidade, distancia) / 60;
+                    txbTempoChegada.Text = String.Format("{0:0.00}", tempo) + " hora(s)";
+                }
+                else
+                {
+                    tempo = calcularTempoChegada(onibusMaisProximo.velocidade, distancia);
+                    txbTempoChegada.Text = String.Format("{0:0.00}", tempo) + " minuto(s)";
+                }
 
                 posicao = new Geopoint(new BasicGeoposition() { Latitude = Convert.ToDouble(onibusMaisProximo.latitude), Longitude = Convert.ToDouble(onibusMaisProximo.longitude) });
 
@@ -155,6 +176,11 @@ namespace AcheoOnibus
 
                 return null;
             }
+        }
+
+        private double calcularTempoChegada(double velocidade, double distancia)
+        {
+            return (distancia/velocidade) * MINUTO;
         }
 
         private void getPosicaoAtualOnibus(object sender, object e)
@@ -281,6 +307,16 @@ namespace AcheoOnibus
         private void mapFindBus_CenterChanged(MapControl sender, object args)
         {
             centroAtualDoMapa = mapFindBus.Center;
+        }
+
+        private async void btmEu_Click(object sender, RoutedEventArgs e)
+        {
+            await mapFindBus.TrySetViewAsync(posicaoAtualUsuario, sldZoom.Value, sldEixoX.Value, sldEixoY.Value, MapAnimationKind.None);
+        }
+
+        private async void btmOnibus_Click(object sender, RoutedEventArgs e)
+        {
+            await mapFindBus.TrySetViewAsync(posicao, sldZoom.Value, sldEixoX.Value, sldEixoY.Value, MapAnimationKind.None);
         }
     }
 }

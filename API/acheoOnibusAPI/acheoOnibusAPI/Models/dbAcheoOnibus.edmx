@@ -22,13 +22,15 @@
           <Property Name="latitude" Type="varchar" MaxLength="255" Nullable="false" />
           <Property Name="longitude" Type="varchar" MaxLength="255" Nullable="false" />
           <Property Name="numeroOnibus" Type="int" Nullable="false" />
+          <Property Name="velocidade" Type="float" Nullable="false" />
+          <Property Name="sentidoViagem" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="tblOnibusItinerario">
           <Key>
             <PropertyRef Name="idOnibusItinerario" />
           </Key>
           <Property Name="idOnibusItinerario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="data" Type="date" Nullable="false" />
+          <Property Name="data" Type="datetime" Nullable="false" />
           <Property Name="idOnibusFK" Type="int" Nullable="false" />
           <Property Name="idItinerarioFK" Type="int" Nullable="false" />
         </EntityType>
@@ -38,8 +40,8 @@
           </Key>
           <Property Name="idViagem" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="sentidoViagem" Type="int" Nullable="false" />
-          <Property Name="destino" Type="varchar" MaxLength="255" Nullable="false" />
           <Property Name="origem" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="destino" Type="varchar" MaxLength="255" Nullable="false" />
           <Property Name="idItinerarioFK" Type="int" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
@@ -59,26 +61,24 @@ warning 6002: The table/view 'dbAcheoOnibus.dbo.getOnibus' does not have a prima
         <EntityType Name="getOnibus">
           <Key>
             <PropertyRef Name="numero" />
-            <PropertyRef Name="origem" />
-            <PropertyRef Name="destino" />
             <PropertyRef Name="sentidoViagem" />
             <PropertyRef Name="latitude" />
             <PropertyRef Name="longitude" />
+            <PropertyRef Name="velocidade" />
             <PropertyRef Name="placa" />
             <PropertyRef Name="numeroOnibus" />
             <PropertyRef Name="tarifa" />
             <PropertyRef Name="data" />
           </Key>
           <Property Name="numero" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="origem" Type="varchar" MaxLength="255" Nullable="false" />
-          <Property Name="destino" Type="varchar" MaxLength="255" Nullable="false" />
           <Property Name="sentidoViagem" Type="int" Nullable="false" />
           <Property Name="latitude" Type="varchar" MaxLength="255" Nullable="false" />
           <Property Name="longitude" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="velocidade" Type="float" Nullable="false" />
           <Property Name="placa" Type="varchar" MaxLength="8" Nullable="false" />
           <Property Name="numeroOnibus" Type="int" Nullable="false" />
           <Property Name="tarifa" Type="money" Nullable="false" />
-          <Property Name="data" Type="date" Nullable="false" />
+          <Property Name="data" Type="datetime" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'dbAcheoOnibus.dbo.getViagens' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -86,17 +86,17 @@ warning 6002: The table/view 'dbAcheoOnibus.dbo.getViagens' does not have a prim
           <Key>
             <PropertyRef Name="idViagem" />
             <PropertyRef Name="sentidoViagem" />
-            <PropertyRef Name="destino" />
             <PropertyRef Name="origem" />
+            <PropertyRef Name="destino" />
             <PropertyRef Name="idItinerarioFK" />
           </Key>
           <Property Name="idViagem" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="sentidoViagem" Type="int" Nullable="false" />
-          <Property Name="destino" Type="varchar" MaxLength="255" Nullable="false" />
           <Property Name="origem" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="destino" Type="varchar" MaxLength="255" Nullable="false" />
           <Property Name="idItinerarioFK" Type="int" Nullable="false" />
         </EntityType>
-        <Association Name="FK__tblOnibus__idIti__59FA5E80">
+        <Association Name="FK__tblOnibus__idIti__30F848ED">
           <End Role="tblItinerario" Type="Self.tblItinerario" Multiplicity="1" />
           <End Role="tblOnibusItinerario" Type="Self.tblOnibusItinerario" Multiplicity="*" />
           <ReferentialConstraint>
@@ -108,7 +108,7 @@ warning 6002: The table/view 'dbAcheoOnibus.dbo.getViagens' does not have a prim
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__tblOnibus__idOni__59063A47">
+        <Association Name="FK__tblOnibus__idOni__300424B4">
           <End Role="tblOnibus" Type="Self.tblOnibus" Multiplicity="1" />
           <End Role="tblOnibusItinerario" Type="Self.tblOnibusItinerario" Multiplicity="*" />
           <ReferentialConstraint>
@@ -120,7 +120,7 @@ warning 6002: The table/view 'dbAcheoOnibus.dbo.getViagens' does not have a prim
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__tblViagem__idIti__5629CD9C">
+        <Association Name="FK__tblViagem__idIti__2D27B809">
           <End Role="tblItinerario" Type="Self.tblItinerario" Multiplicity="1" />
           <End Role="tblViagem" Type="Self.tblViagem" Multiplicity="*" />
           <ReferentialConstraint>
@@ -147,11 +147,10 @@ warning 6002: The table/view 'dbAcheoOnibus.dbo.getViagens' does not have a prim
           <EntitySet Name="getOnibus" EntityType="Self.getOnibus" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [getOnibus].[numero] AS [numero], 
-    [getOnibus].[origem] AS [origem], 
-    [getOnibus].[destino] AS [destino], 
     [getOnibus].[sentidoViagem] AS [sentidoViagem], 
     [getOnibus].[latitude] AS [latitude], 
     [getOnibus].[longitude] AS [longitude], 
+    [getOnibus].[velocidade] AS [velocidade], 
     [getOnibus].[placa] AS [placa], 
     [getOnibus].[numeroOnibus] AS [numeroOnibus], 
     [getOnibus].[tarifa] AS [tarifa], 
@@ -162,20 +161,20 @@ warning 6002: The table/view 'dbAcheoOnibus.dbo.getViagens' does not have a prim
             <DefiningQuery>SELECT 
     [getViagens].[idViagem] AS [idViagem], 
     [getViagens].[sentidoViagem] AS [sentidoViagem], 
-    [getViagens].[destino] AS [destino], 
     [getViagens].[origem] AS [origem], 
+    [getViagens].[destino] AS [destino], 
     [getViagens].[idItinerarioFK] AS [idItinerarioFK]
     FROM [dbo].[getViagens] AS [getViagens]</DefiningQuery>
           </EntitySet>
-          <AssociationSet Name="FK__tblOnibus__idIti__59FA5E80" Association="Self.FK__tblOnibus__idIti__59FA5E80">
+          <AssociationSet Name="FK__tblOnibus__idIti__30F848ED" Association="Self.FK__tblOnibus__idIti__30F848ED">
             <End Role="tblItinerario" EntitySet="tblItinerario" />
             <End Role="tblOnibusItinerario" EntitySet="tblOnibusItinerario" />
           </AssociationSet>
-          <AssociationSet Name="FK__tblOnibus__idOni__59063A47" Association="Self.FK__tblOnibus__idOni__59063A47">
+          <AssociationSet Name="FK__tblOnibus__idOni__300424B4" Association="Self.FK__tblOnibus__idOni__300424B4">
             <End Role="tblOnibus" EntitySet="tblOnibus" />
             <End Role="tblOnibusItinerario" EntitySet="tblOnibusItinerario" />
           </AssociationSet>
-          <AssociationSet Name="FK__tblViagem__idIti__5629CD9C" Association="Self.FK__tblViagem__idIti__5629CD9C">
+          <AssociationSet Name="FK__tblViagem__idIti__2D27B809" Association="Self.FK__tblViagem__idIti__2D27B809">
             <End Role="tblItinerario" EntitySet="tblItinerario" />
             <End Role="tblViagem" EntitySet="tblViagem" />
           </AssociationSet>
@@ -192,8 +191,8 @@ warning 6002: The table/view 'dbAcheoOnibus.dbo.getViagens' does not have a prim
           <Property Name="idItinerario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="tarifa" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
           <Property Name="numero" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="tblOnibusItinerario" Relationship="Self.FK__tblOnibus__idIti__59FA5E80" FromRole="tblItinerario" ToRole="tblOnibusItinerario" />
-          <NavigationProperty Name="tblViagem" Relationship="Self.FK__tblViagem__idIti__5629CD9C" FromRole="tblItinerario" ToRole="tblViagem" />
+          <NavigationProperty Name="tblOnibusItinerario" Relationship="Self.FK__tblOnibus__idIti__30F848ED" FromRole="tblItinerario" ToRole="tblOnibusItinerario" />
+          <NavigationProperty Name="tblViagem" Relationship="Self.FK__tblViagem__idIti__2D27B809" FromRole="tblItinerario" ToRole="tblViagem" />
         </EntityType>
         <EntityType Name="tblOnibus">
           <Key>
@@ -204,18 +203,20 @@ warning 6002: The table/view 'dbAcheoOnibus.dbo.getViagens' does not have a prim
           <Property Name="latitude" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="longitude" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="numeroOnibus" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="tblOnibusItinerario" Relationship="Self.FK__tblOnibus__idOni__59063A47" FromRole="tblOnibus" ToRole="tblOnibusItinerario" />
+          <Property Name="velocidade" Type="Double" Nullable="false" />
+          <Property Name="sentidoViagem" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="tblOnibusItinerario" Relationship="Self.FK__tblOnibus__idOni__300424B4" FromRole="tblOnibus" ToRole="tblOnibusItinerario" />
         </EntityType>
         <EntityType Name="tblOnibusItinerario">
           <Key>
             <PropertyRef Name="idOnibusItinerario" />
           </Key>
           <Property Name="idOnibusItinerario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="data" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="data" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="idOnibusFK" Type="Int32" Nullable="false" />
           <Property Name="idItinerarioFK" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="tblItinerario" Relationship="Self.FK__tblOnibus__idIti__59FA5E80" FromRole="tblOnibusItinerario" ToRole="tblItinerario" />
-          <NavigationProperty Name="tblOnibus" Relationship="Self.FK__tblOnibus__idOni__59063A47" FromRole="tblOnibusItinerario" ToRole="tblOnibus" />
+          <NavigationProperty Name="tblItinerario" Relationship="Self.FK__tblOnibus__idIti__30F848ED" FromRole="tblOnibusItinerario" ToRole="tblItinerario" />
+          <NavigationProperty Name="tblOnibus" Relationship="Self.FK__tblOnibus__idOni__300424B4" FromRole="tblOnibusItinerario" ToRole="tblOnibus" />
         </EntityType>
         <EntityType Name="tblViagem">
           <Key>
@@ -223,10 +224,10 @@ warning 6002: The table/view 'dbAcheoOnibus.dbo.getViagens' does not have a prim
           </Key>
           <Property Name="idViagem" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="sentidoViagem" Type="Int32" Nullable="false" />
-          <Property Name="destino" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="origem" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="destino" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="idItinerarioFK" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="tblItinerario" Relationship="Self.FK__tblViagem__idIti__5629CD9C" FromRole="tblViagem" ToRole="tblItinerario" />
+          <NavigationProperty Name="tblItinerario" Relationship="Self.FK__tblViagem__idIti__2D27B809" FromRole="tblViagem" ToRole="tblItinerario" />
         </EntityType>
         <EntityType Name="getItinerarios">
           <Key>
@@ -241,42 +242,40 @@ warning 6002: The table/view 'dbAcheoOnibus.dbo.getViagens' does not have a prim
         <EntityType Name="getOnibus">
           <Key>
             <PropertyRef Name="numero" />
-            <PropertyRef Name="origem" />
-            <PropertyRef Name="destino" />
             <PropertyRef Name="sentidoViagem" />
             <PropertyRef Name="latitude" />
             <PropertyRef Name="longitude" />
+            <PropertyRef Name="velocidade" />
             <PropertyRef Name="placa" />
             <PropertyRef Name="numeroOnibus" />
             <PropertyRef Name="tarifa" />
             <PropertyRef Name="data" />
           </Key>
           <Property Name="numero" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="origem" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="destino" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="sentidoViagem" Type="Int32" Nullable="false" />
           <Property Name="latitude" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="longitude" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="velocidade" Type="Double" Nullable="false" />
           <Property Name="placa" Type="String" MaxLength="8" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="numeroOnibus" Type="Int32" Nullable="false" />
           <Property Name="tarifa" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
-          <Property Name="data" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="data" Type="DateTime" Nullable="false" Precision="3" />
         </EntityType>
         <EntityType Name="getViagens">
           <Key>
             <PropertyRef Name="idViagem" />
             <PropertyRef Name="sentidoViagem" />
-            <PropertyRef Name="destino" />
             <PropertyRef Name="origem" />
+            <PropertyRef Name="destino" />
             <PropertyRef Name="idItinerarioFK" />
           </Key>
           <Property Name="idViagem" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="sentidoViagem" Type="Int32" Nullable="false" />
-          <Property Name="destino" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="origem" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="destino" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="idItinerarioFK" Type="Int32" Nullable="false" />
         </EntityType>
-        <Association Name="FK__tblOnibus__idIti__59FA5E80">
+        <Association Name="FK__tblOnibus__idIti__30F848ED">
           <End Role="tblItinerario" Type="Self.tblItinerario" Multiplicity="1" />
           <End Role="tblOnibusItinerario" Type="Self.tblOnibusItinerario" Multiplicity="*" />
           <ReferentialConstraint>
@@ -288,7 +287,7 @@ warning 6002: The table/view 'dbAcheoOnibus.dbo.getViagens' does not have a prim
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__tblViagem__idIti__5629CD9C">
+        <Association Name="FK__tblViagem__idIti__2D27B809">
           <End Role="tblItinerario" Type="Self.tblItinerario" Multiplicity="1" />
           <End Role="tblViagem" Type="Self.tblViagem" Multiplicity="*" />
           <ReferentialConstraint>
@@ -300,7 +299,7 @@ warning 6002: The table/view 'dbAcheoOnibus.dbo.getViagens' does not have a prim
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__tblOnibus__idOni__59063A47">
+        <Association Name="FK__tblOnibus__idOni__300424B4">
           <End Role="tblOnibus" Type="Self.tblOnibus" Multiplicity="1" />
           <End Role="tblOnibusItinerario" Type="Self.tblOnibusItinerario" Multiplicity="*" />
           <ReferentialConstraint>
@@ -320,15 +319,15 @@ warning 6002: The table/view 'dbAcheoOnibus.dbo.getViagens' does not have a prim
           <EntitySet Name="getItinerarios" EntityType="Self.getItinerarios" />
           <EntitySet Name="getOnibus" EntityType="Self.getOnibus" />
           <EntitySet Name="getViagens" EntityType="Self.getViagens" />
-          <AssociationSet Name="FK__tblOnibus__idIti__59FA5E80" Association="Self.FK__tblOnibus__idIti__59FA5E80">
+          <AssociationSet Name="FK__tblOnibus__idIti__30F848ED" Association="Self.FK__tblOnibus__idIti__30F848ED">
             <End Role="tblItinerario" EntitySet="tblItinerario" />
             <End Role="tblOnibusItinerario" EntitySet="tblOnibusItinerario" />
           </AssociationSet>
-          <AssociationSet Name="FK__tblViagem__idIti__5629CD9C" Association="Self.FK__tblViagem__idIti__5629CD9C">
+          <AssociationSet Name="FK__tblViagem__idIti__2D27B809" Association="Self.FK__tblViagem__idIti__2D27B809">
             <End Role="tblItinerario" EntitySet="tblItinerario" />
             <End Role="tblViagem" EntitySet="tblViagem" />
           </AssociationSet>
-          <AssociationSet Name="FK__tblOnibus__idOni__59063A47" Association="Self.FK__tblOnibus__idOni__59063A47">
+          <AssociationSet Name="FK__tblOnibus__idOni__300424B4" Association="Self.FK__tblOnibus__idOni__300424B4">
             <End Role="tblOnibus" EntitySet="tblOnibus" />
             <End Role="tblOnibusItinerario" EntitySet="tblOnibusItinerario" />
           </AssociationSet>
@@ -356,6 +355,8 @@ warning 6002: The table/view 'dbAcheoOnibus.dbo.getViagens' does not have a prim
                 <ScalarProperty Name="latitude" ColumnName="latitude" />
                 <ScalarProperty Name="longitude" ColumnName="longitude" />
                 <ScalarProperty Name="numeroOnibus" ColumnName="numeroOnibus" />
+                <ScalarProperty Name="velocidade" ColumnName="velocidade" />
+                <ScalarProperty Name="sentidoViagem" ColumnName="sentidoViagem" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -374,8 +375,8 @@ warning 6002: The table/view 'dbAcheoOnibus.dbo.getViagens' does not have a prim
               <MappingFragment StoreEntitySet="tblViagem">
                 <ScalarProperty Name="idViagem" ColumnName="idViagem" />
                 <ScalarProperty Name="sentidoViagem" ColumnName="sentidoViagem" />
-                <ScalarProperty Name="destino" ColumnName="destino" />
                 <ScalarProperty Name="origem" ColumnName="origem" />
+                <ScalarProperty Name="destino" ColumnName="destino" />
                 <ScalarProperty Name="idItinerarioFK" ColumnName="idItinerarioFK" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -393,11 +394,10 @@ warning 6002: The table/view 'dbAcheoOnibus.dbo.getViagens' does not have a prim
             <EntityTypeMapping TypeName="dbAcheoOnibusModel.getOnibus">
               <MappingFragment StoreEntitySet="getOnibus">
                 <ScalarProperty Name="numero" ColumnName="numero" />
-                <ScalarProperty Name="origem" ColumnName="origem" />
-                <ScalarProperty Name="destino" ColumnName="destino" />
                 <ScalarProperty Name="sentidoViagem" ColumnName="sentidoViagem" />
                 <ScalarProperty Name="latitude" ColumnName="latitude" />
                 <ScalarProperty Name="longitude" ColumnName="longitude" />
+                <ScalarProperty Name="velocidade" ColumnName="velocidade" />
                 <ScalarProperty Name="placa" ColumnName="placa" />
                 <ScalarProperty Name="numeroOnibus" ColumnName="numeroOnibus" />
                 <ScalarProperty Name="tarifa" ColumnName="tarifa" />
@@ -410,8 +410,8 @@ warning 6002: The table/view 'dbAcheoOnibus.dbo.getViagens' does not have a prim
               <MappingFragment StoreEntitySet="getViagens">
                 <ScalarProperty Name="idViagem" ColumnName="idViagem" />
                 <ScalarProperty Name="sentidoViagem" ColumnName="sentidoViagem" />
-                <ScalarProperty Name="destino" ColumnName="destino" />
                 <ScalarProperty Name="origem" ColumnName="origem" />
+                <ScalarProperty Name="destino" ColumnName="destino" />
                 <ScalarProperty Name="idItinerarioFK" ColumnName="idItinerarioFK" />
               </MappingFragment>
             </EntityTypeMapping>
