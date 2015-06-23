@@ -11,13 +11,19 @@ namespace acheoOnibusAPI.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.Runtime.Serialization;
+    [DataContract]
     public partial class getViagens
     {
+        [DataMember]
         public int idViagem { get; set; }
+        [DataMember]
         public int sentidoViagem { get; set; }
+        [DataMember]
         public string origem { get; set; }
+        [DataMember]
         public string destino { get; set; }
+        [DataMember]
         public int idItinerarioFK { get; set; }
     }
 }

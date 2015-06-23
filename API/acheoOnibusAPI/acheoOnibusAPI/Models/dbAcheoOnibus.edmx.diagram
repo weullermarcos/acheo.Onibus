@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="feecace833d34c339cdf1abf4c70baed" Name="Diagram1">
+      <Diagram DiagramId="72ab5af556dc4852af320053476b0025" Name="Diagram1" ZoomLevel="52">
         <EntityTypeShape EntityType="dbAcheoOnibusModel.tblItinerario" Width="1.5" PointX="0.75" PointY="2.625" IsExpanded="true" />
         <EntityTypeShape EntityType="dbAcheoOnibusModel.tblOnibus" Width="1.5" PointX="0.75" PointY="7.375" IsExpanded="true" />
         <EntityTypeShape EntityType="dbAcheoOnibusModel.tblOnibusItinerario" Width="1.5" PointX="3" PointY="2.5" IsExpanded="true" />
@@ -12,9 +12,9 @@
         <EntityTypeShape EntityType="dbAcheoOnibusModel.getItinerarios" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="dbAcheoOnibusModel.getOnibus" Width="1.5" PointX="5.75" PointY="3.75" IsExpanded="true" />
         <EntityTypeShape EntityType="dbAcheoOnibusModel.getViagens" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
-        <AssociationConnector Association="dbAcheoOnibusModel.FK__tblOnibus__idIti__30F848ED" ManuallyRouted="false" />
-        <AssociationConnector Association="dbAcheoOnibusModel.FK__tblViagem__idIti__2D27B809" ManuallyRouted="false" />
-        <AssociationConnector Association="dbAcheoOnibusModel.FK__tblOnibus__idOni__300424B4" ManuallyRouted="false" />
+        <AssociationConnector Association="dbAcheoOnibusModel.FK__tblOnibus__idIti__1920BF5C" ManuallyRouted="false" />
+        <AssociationConnector Association="dbAcheoOnibusModel.FK__tblViagem__idIti__15502E78" ManuallyRouted="false" />
+        <AssociationConnector Association="dbAcheoOnibusModel.FK__tblOnibus__idOni__182C9B23" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -96,7 +96,7 @@ warning 6002: The table/view 'dbAcheoOnibus.dbo.getViagens' does not have a prim
           <Property Name="destino" Type="varchar" MaxLength="255" Nullable="false" />
           <Property Name="idItinerarioFK" Type="int" Nullable="false" />
         </EntityType>
-        <Association Name="FK__tblOnibus__idIti__30F848ED">
+        <Association Name="FK__tblOnibus__idIti__1920BF5C">
           <End Role="tblItinerario" Type="Self.tblItinerario" Multiplicity="1" />
           <End Role="tblOnibusItinerario" Type="Self.tblOnibusItinerario" Multiplicity="*" />
           <ReferentialConstraint>
@@ -108,7 +108,7 @@ warning 6002: The table/view 'dbAcheoOnibus.dbo.getViagens' does not have a prim
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__tblOnibus__idOni__300424B4">
+        <Association Name="FK__tblOnibus__idOni__182C9B23">
           <End Role="tblOnibus" Type="Self.tblOnibus" Multiplicity="1" />
           <End Role="tblOnibusItinerario" Type="Self.tblOnibusItinerario" Multiplicity="*" />
           <ReferentialConstraint>
@@ -120,7 +120,7 @@ warning 6002: The table/view 'dbAcheoOnibus.dbo.getViagens' does not have a prim
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__tblViagem__idIti__2D27B809">
+        <Association Name="FK__tblViagem__idIti__15502E78">
           <End Role="tblItinerario" Type="Self.tblItinerario" Multiplicity="1" />
           <End Role="tblViagem" Type="Self.tblViagem" Multiplicity="*" />
           <ReferentialConstraint>
@@ -166,15 +166,15 @@ warning 6002: The table/view 'dbAcheoOnibus.dbo.getViagens' does not have a prim
     [getViagens].[idItinerarioFK] AS [idItinerarioFK]
     FROM [dbo].[getViagens] AS [getViagens]</DefiningQuery>
           </EntitySet>
-          <AssociationSet Name="FK__tblOnibus__idIti__30F848ED" Association="Self.FK__tblOnibus__idIti__30F848ED">
+          <AssociationSet Name="FK__tblOnibus__idIti__1920BF5C" Association="Self.FK__tblOnibus__idIti__1920BF5C">
             <End Role="tblItinerario" EntitySet="tblItinerario" />
             <End Role="tblOnibusItinerario" EntitySet="tblOnibusItinerario" />
           </AssociationSet>
-          <AssociationSet Name="FK__tblOnibus__idOni__300424B4" Association="Self.FK__tblOnibus__idOni__300424B4">
+          <AssociationSet Name="FK__tblOnibus__idOni__182C9B23" Association="Self.FK__tblOnibus__idOni__182C9B23">
             <End Role="tblOnibus" EntitySet="tblOnibus" />
             <End Role="tblOnibusItinerario" EntitySet="tblOnibusItinerario" />
           </AssociationSet>
-          <AssociationSet Name="FK__tblViagem__idIti__2D27B809" Association="Self.FK__tblViagem__idIti__2D27B809">
+          <AssociationSet Name="FK__tblViagem__idIti__15502E78" Association="Self.FK__tblViagem__idIti__15502E78">
             <End Role="tblItinerario" EntitySet="tblItinerario" />
             <End Role="tblViagem" EntitySet="tblViagem" />
           </AssociationSet>
@@ -191,8 +191,8 @@ warning 6002: The table/view 'dbAcheoOnibus.dbo.getViagens' does not have a prim
           <Property Name="idItinerario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="tarifa" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
           <Property Name="numero" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="tblOnibusItinerario" Relationship="Self.FK__tblOnibus__idIti__30F848ED" FromRole="tblItinerario" ToRole="tblOnibusItinerario" />
-          <NavigationProperty Name="tblViagem" Relationship="Self.FK__tblViagem__idIti__2D27B809" FromRole="tblItinerario" ToRole="tblViagem" />
+          <NavigationProperty Name="tblOnibusItinerario" Relationship="Self.FK__tblOnibus__idIti__1920BF5C" FromRole="tblItinerario" ToRole="tblOnibusItinerario" />
+          <NavigationProperty Name="tblViagem" Relationship="Self.FK__tblViagem__idIti__15502E78" FromRole="tblItinerario" ToRole="tblViagem" />
         </EntityType>
         <EntityType Name="tblOnibus">
           <Key>
@@ -205,7 +205,7 @@ warning 6002: The table/view 'dbAcheoOnibus.dbo.getViagens' does not have a prim
           <Property Name="numeroOnibus" Type="Int32" Nullable="false" />
           <Property Name="velocidade" Type="Double" Nullable="false" />
           <Property Name="sentidoViagem" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="tblOnibusItinerario" Relationship="Self.FK__tblOnibus__idOni__300424B4" FromRole="tblOnibus" ToRole="tblOnibusItinerario" />
+          <NavigationProperty Name="tblOnibusItinerario" Relationship="Self.FK__tblOnibus__idOni__182C9B23" FromRole="tblOnibus" ToRole="tblOnibusItinerario" />
         </EntityType>
         <EntityType Name="tblOnibusItinerario">
           <Key>
@@ -215,8 +215,8 @@ warning 6002: The table/view 'dbAcheoOnibus.dbo.getViagens' does not have a prim
           <Property Name="data" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="idOnibusFK" Type="Int32" Nullable="false" />
           <Property Name="idItinerarioFK" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="tblItinerario" Relationship="Self.FK__tblOnibus__idIti__30F848ED" FromRole="tblOnibusItinerario" ToRole="tblItinerario" />
-          <NavigationProperty Name="tblOnibus" Relationship="Self.FK__tblOnibus__idOni__300424B4" FromRole="tblOnibusItinerario" ToRole="tblOnibus" />
+          <NavigationProperty Name="tblItinerario" Relationship="Self.FK__tblOnibus__idIti__1920BF5C" FromRole="tblOnibusItinerario" ToRole="tblItinerario" />
+          <NavigationProperty Name="tblOnibus" Relationship="Self.FK__tblOnibus__idOni__182C9B23" FromRole="tblOnibusItinerario" ToRole="tblOnibus" />
         </EntityType>
         <EntityType Name="tblViagem">
           <Key>
@@ -227,7 +227,7 @@ warning 6002: The table/view 'dbAcheoOnibus.dbo.getViagens' does not have a prim
           <Property Name="origem" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="destino" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="idItinerarioFK" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="tblItinerario" Relationship="Self.FK__tblViagem__idIti__2D27B809" FromRole="tblViagem" ToRole="tblItinerario" />
+          <NavigationProperty Name="tblItinerario" Relationship="Self.FK__tblViagem__idIti__15502E78" FromRole="tblViagem" ToRole="tblItinerario" />
         </EntityType>
         <EntityType Name="getItinerarios">
           <Key>
@@ -275,7 +275,7 @@ warning 6002: The table/view 'dbAcheoOnibus.dbo.getViagens' does not have a prim
           <Property Name="destino" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="idItinerarioFK" Type="Int32" Nullable="false" />
         </EntityType>
-        <Association Name="FK__tblOnibus__idIti__30F848ED">
+        <Association Name="FK__tblOnibus__idIti__1920BF5C">
           <End Role="tblItinerario" Type="Self.tblItinerario" Multiplicity="1" />
           <End Role="tblOnibusItinerario" Type="Self.tblOnibusItinerario" Multiplicity="*" />
           <ReferentialConstraint>
@@ -287,7 +287,7 @@ warning 6002: The table/view 'dbAcheoOnibus.dbo.getViagens' does not have a prim
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__tblViagem__idIti__2D27B809">
+        <Association Name="FK__tblViagem__idIti__15502E78">
           <End Role="tblItinerario" Type="Self.tblItinerario" Multiplicity="1" />
           <End Role="tblViagem" Type="Self.tblViagem" Multiplicity="*" />
           <ReferentialConstraint>
@@ -299,7 +299,7 @@ warning 6002: The table/view 'dbAcheoOnibus.dbo.getViagens' does not have a prim
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__tblOnibus__idOni__300424B4">
+        <Association Name="FK__tblOnibus__idOni__182C9B23">
           <End Role="tblOnibus" Type="Self.tblOnibus" Multiplicity="1" />
           <End Role="tblOnibusItinerario" Type="Self.tblOnibusItinerario" Multiplicity="*" />
           <ReferentialConstraint>
@@ -319,15 +319,15 @@ warning 6002: The table/view 'dbAcheoOnibus.dbo.getViagens' does not have a prim
           <EntitySet Name="getItinerarios" EntityType="Self.getItinerarios" />
           <EntitySet Name="getOnibus" EntityType="Self.getOnibus" />
           <EntitySet Name="getViagens" EntityType="Self.getViagens" />
-          <AssociationSet Name="FK__tblOnibus__idIti__30F848ED" Association="Self.FK__tblOnibus__idIti__30F848ED">
+          <AssociationSet Name="FK__tblOnibus__idIti__1920BF5C" Association="Self.FK__tblOnibus__idIti__1920BF5C">
             <End Role="tblItinerario" EntitySet="tblItinerario" />
             <End Role="tblOnibusItinerario" EntitySet="tblOnibusItinerario" />
           </AssociationSet>
-          <AssociationSet Name="FK__tblViagem__idIti__2D27B809" Association="Self.FK__tblViagem__idIti__2D27B809">
+          <AssociationSet Name="FK__tblViagem__idIti__15502E78" Association="Self.FK__tblViagem__idIti__15502E78">
             <End Role="tblItinerario" EntitySet="tblItinerario" />
             <End Role="tblViagem" EntitySet="tblViagem" />
           </AssociationSet>
-          <AssociationSet Name="FK__tblOnibus__idOni__300424B4" Association="Self.FK__tblOnibus__idOni__300424B4">
+          <AssociationSet Name="FK__tblOnibus__idOni__182C9B23" Association="Self.FK__tblOnibus__idOni__182C9B23">
             <End Role="tblOnibus" EntitySet="tblOnibus" />
             <End Role="tblOnibusItinerario" EntitySet="tblOnibusItinerario" />
           </AssociationSet>
