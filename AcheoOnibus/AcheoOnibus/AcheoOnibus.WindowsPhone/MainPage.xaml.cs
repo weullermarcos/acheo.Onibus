@@ -75,7 +75,7 @@ namespace AcheoOnibus
             try
             {
                 HttpClient cliente = new HttpClient();
-                HttpResponseMessage resposta = cliente.GetAsync("http://localhost:42326/api/Itinerarios").Result;
+                HttpResponseMessage resposta = cliente.GetAsync("http://localhost:1209/api/Itinerarios").Result;
                 HttpContent stream = resposta.Content;
                 var resultadoLista = stream.ReadAsStringAsync();
                 List<Itinerario> listLocation = JsonConvert.DeserializeObject<List<Itinerario>>(resultadoLista.Result);
@@ -93,7 +93,7 @@ namespace AcheoOnibus
             try
             {
                 HttpClient cliente = new HttpClient();
-                HttpResponseMessage resposta = cliente.GetAsync("http://localhost:42326/api/Viagens").Result;
+                HttpResponseMessage resposta = cliente.GetAsync("http://localhost:1209/api/Viagens").Result;
                 HttpContent stream = resposta.Content;
                 var resultadoLista = stream.ReadAsStringAsync();
                 List<Viagem> listViagens = JsonConvert.DeserializeObject<List<Viagem>>(resultadoLista.Result);
@@ -149,6 +149,8 @@ namespace AcheoOnibus
                     listaDeParametros.Add(viagem.Value.ToString());
                 }
             }
+
+            listaDeParametros.Add(cmbSentidoViagem.SelectedItem.ToString());
 
             Frame.Navigate(typeof(MapPage), listaDeParametros);
         }

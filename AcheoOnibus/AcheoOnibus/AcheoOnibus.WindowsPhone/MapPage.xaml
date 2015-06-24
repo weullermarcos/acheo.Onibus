@@ -15,12 +15,13 @@
         <Slider Name="sldEixoX" Margin="291,481,0,0" RenderTransformOrigin="0.435,0.499" Height="43" VerticalAlignment="Top" HorizontalAlignment="Left" Width="94" Minimum="0" Maximum="180" ValueChanged="sldEixoX_ValueChanged"/>
         <Slider Name="sldZoom" Margin="11,11,0,0" RenderTransformOrigin="0.435,0.499" Height="90" VerticalAlignment="Top" HorizontalAlignment="Left" Width="39" Orientation="Vertical" Minimum="1" Maximum="20" ValueChanged="sldZoom_ValueChanged"/>
         <TextBlock HorizontalAlignment="Left" Margin="10,546,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="14" Text="Ônibus selecionado:"/>
-        <TextBox x:Name="txbOnibusSelecionado" HorizontalAlignment="Left" Margin="197,531,0,0" TextWrapping="Wrap" VerticalAlignment="Top" IsEnabled="False" FontSize="14" Width="124" Height="17"/>
+        <TextBox x:Name="txbOnibusSelecionado" HorizontalAlignment="Left" Margin="152,531,0,0" TextWrapping="Wrap" VerticalAlignment="Top" IsEnabled="False" FontSize="14" Width="233" Height="17"/>
         <TextBlock HorizontalAlignment="Left" Margin="10,580,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="14" Text="Tarifa:"/>
-        <TextBox x:Name="txbTarifa" HorizontalAlignment="Left" Margin="196,565,0,0" TextWrapping="Wrap" VerticalAlignment="Top" IsEnabled="False" FontSize="14" Width="124" Height="17"/>
-        <TextBlock HorizontalAlignment="Left" Margin="10,617,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="14" Text="Tempo estimado de chegada:"/>
-        <TextBox x:Name="txbTempoChegada" HorizontalAlignment="Left" Margin="196,602,0,0" TextWrapping="Wrap" VerticalAlignment="Top" IsEnabled="False" FontSize="14" Width="124" Height="17"/>
+        <TextBox x:Name="txbTarifa" HorizontalAlignment="Left" Margin="152,565,0,0" TextWrapping="Wrap" VerticalAlignment="Top" IsEnabled="False" FontSize="14" Width="235" Height="17"/>
+        <TextBlock HorizontalAlignment="Left" Margin="10,617,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="14" Text="Sentido da viagem:"/>
+        <TextBox x:Name="txbSentidoViagem" HorizontalAlignment="Left" Margin="152,602,0,0" TextWrapping="Wrap" VerticalAlignment="Top" IsEnabled="False" FontSize="14" Width="235" Height="17"/>
         <Button x:Name="btmEu" Content="Eu" HorizontalAlignment="Left" Margin="10,476,0,0" VerticalAlignment="Top" Height="29" Width="84" RenderTransformOrigin="0.5,0.5" Background="Teal" Click="btmEu_Click"/>
         <Button x:Name="btmOnibus" Content="Ônibus" HorizontalAlignment="Left" Margin="124,476,0,0" VerticalAlignment="Top" Background="Teal" Click="btmOnibus_Click"/>
+        <TextBlock x:Name="txbAvisos" HorizontalAlignment="Left" Margin="25,441,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="40" Width="360" Foreground="Red" FontWeight="Bold" FontSize="14" TextAlignment="Center"/>
     </Grid>
 </Page>

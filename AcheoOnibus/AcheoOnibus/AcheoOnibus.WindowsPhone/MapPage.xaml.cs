@@ -45,10 +45,10 @@ namespace AcheoOnibus
 
         string itinerario;
         int sentidoViagem;
+        string viagem;
         bool mostraUsuario = true;
         List<Onibus> listaFiltradaOnibus = new List<Onibus>();
         DispatcherTimer contador = new DispatcherTimer();
-        MapRouteFinderResult routeResult;
 
         public MapPage()
         {
@@ -64,13 +64,14 @@ namespace AcheoOnibus
         /// This parameter is typically used to configure the page.</param>
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-
+            
             List<object> listaDeParametros = e.Parameter as List<object>;
 
             if (listaDeParametros != null && listaDeParametros.Count > 1)
             {
                 itinerario = listaDeParametros[0].ToString();
                 sentidoViagem = Convert.ToInt32(listaDeParametros[1].ToString());
+                viagem = listaDeParametros[2].ToString();
             }
 
             recuperaPosicaoAtual();
@@ -100,50 +101,54 @@ namespace AcheoOnibus
             }
         }
 
-        private async void getDadosRota(Geopoint startPoint, Geopoint endPoint)
+
+        private double CalcularDistancia(double origem_lat, double origem_lng, double destino_lat, double destino_lng)
         {
-            try
-            {
-                routeResult = await MapRouteFinder.GetDrivingRouteAsync(startPoint, endPoint).AsTask().ConfigureAwait(false);
+            double x1 = origem_lat;
+            double x2 = destino_lat;
+            double y1 = origem_lng;
+            double y2 = destino_lng;
 
-                if (routeResult.Status != MapRouteFinderStatus.Success)
-                {
-                    throw new ArgumentException("Erro! Não foi possível calcular a rota do ônibus!");
-                }
-            }
-            catch (Exception err)
-            {
-                Frame.Navigate(typeof(MainPage), err.Message);
-            }
+            double c = 90 - (y2);
+            double b = 90 - (y1);
+            double a = x2 - x1;
 
+            // Formula: cos(a) = cos(b) * cos(c) + sen(b)* sen(c) * cos(A) 
+            double cos_a = Math.Cos(b) * Math.Cos(c) + Math.Sin(c) * Math.Sin(b) * Math.Cos(a);
+            double arc_cos = Math.Acos(cos_a);
+            double distancia = (40030 * arc_cos) / 360;
+
+            return distancia;
         }
 
         private Geopoint getOnibusMaisProximo()
         {
-            Dictionary<Onibus, MapRouteFinderResult> dicionarioOnibusDistancias = new Dictionary<Onibus, MapRouteFinderResult>();
+            Dictionary<Onibus, double> dicionarioOnibusDistancias = new Dictionary<Onibus, double>();
+            double distancia = 0;
             Onibus onibusMaisProximo = new Onibus();
+            txbAvisos.Text = "";
 
             try
             {
                 foreach (Onibus onibus in listaFiltradaOnibus)
                 {
                     posicao = new Geopoint(new BasicGeoposition() { Latitude = Convert.ToDouble(onibus.latitude), Longitude = Convert.ToDouble(onibus.longitude) });
-                    getDadosRota(posicaoAtualUsuario, posicao);
-                    dicionarioOnibusDistancias.Add(onibus, routeResult);
+                    distancia = CalcularDistancia(posicaoAtualUsuario.Position.Latitude, posicaoAtualUsuario.Position.Longitude, Convert.ToDouble(onibus.latitude), Convert.ToDouble(onibus.longitude));
+                    dicionarioOnibusDistancias.Add(onibus, distancia);
                 }
 
-                foreach (KeyValuePair<Onibus, MapRouteFinderResult> onibusDistancia in dicionarioOnibusDistancias)
+                foreach (KeyValuePair<Onibus, double> onibusDistancia in dicionarioOnibusDistancias)
                 {
-                    if (onibusDistancia.Value.Route.LengthInMeters <= routeResult.Route.LengthInMeters)
+                    if (onibusDistancia.Value <= distancia)
                     {
-                        routeResult = onibusDistancia.Value;
+                        distancia = onibusDistancia.Value;
                         onibusMaisProximo = onibusDistancia.Key;
                     }
                 }
 
-                txbTarifa.Text = onibusMaisProximo.placa.ToString();
+                txbTarifa.Text = String.Format("R$ {0:0.00}", onibusMaisProximo.tarifa);
                 txbOnibusSelecionado.Text = onibusMaisProximo.numero.ToString();
-                txbTempoChegada.Text = routeResult.Route.EstimatedDuration.ToString();
+                txbSentidoViagem.Text = viagem;
 
                 posicao = new Geopoint(new BasicGeoposition() { Latitude = Convert.ToDouble(onibusMaisProximo.latitude), Longitude = Convert.ToDouble(onibusMaisProximo.longitude) });
 
@@ -156,18 +161,13 @@ namespace AcheoOnibus
             }
         }
 
-        private double calcularTempoChegada(double velocidade, double distancia)
-        {
-            return (distancia / velocidade);
-        }
-
         private void getPosicaoAtualOnibus(object sender, object e)
         {
             listaFiltradaOnibus.Clear();
             try
             {
                 HttpClient cliente = new HttpClient();
-                HttpResponseMessage resposta = cliente.GetAsync("http://localhost:42326/api/Onibus").Result;
+                HttpResponseMessage resposta = cliente.GetAsync("http://localhost:1209/api/Onibus").Result;
                 HttpContent stream = resposta.Content;
                 var resultadoLista = stream.ReadAsStringAsync();
                 List<Onibus> listaTodosOnibus = JsonConvert.DeserializeObject<List<Onibus>>(resultadoLista.Result);
@@ -210,7 +210,7 @@ namespace AcheoOnibus
             MapIcon novoIcone = new MapIcon();
             novoIcone.Location = point;
             novoIcone.NormalizedAnchorPoint = new Point(0.0, 0.0);
-
+            
             if (mostraUsuario)
             {
                 novoIcone.Title = "Eu";
@@ -242,7 +242,8 @@ namespace AcheoOnibus
                 }
 
                 mapFindBus.Style = Windows.UI.Xaml.Controls.Maps.MapStyle.Road;
-                await mapFindBus.TrySetViewAsync(centroAtualDoMapa, sldZoom.Value, sldEixoX.Value, sldEixoY.Value, MapAnimationKind.Bow).AsTask().ConfigureAwait(false); ;
+                //await mapFindBus.TrySetViewAsync(posicaoRecebida, sldZoom.Value, sldEixoX.Value, sldEixoY.Value, MapAnimationKind.Bow);
+                await mapFindBus.TrySetViewAsync(centroAtualDoMapa, sldZoom.Value, sldEixoX.Value, sldEixoY.Value, MapAnimationKind.Bow);
             }
             catch (Exception)
             {
@@ -250,6 +251,11 @@ namespace AcheoOnibus
             }
         }
 
+        private async void sleep(double seconds)
+        {
+            await System.Threading.Tasks.Task.Delay(TimeSpan.FromSeconds(seconds));
+        }  
+        
         private void iniciarContador()
         {
             contador.Tick += getPosicaoAtualOnibus;
@@ -271,6 +277,8 @@ namespace AcheoOnibus
             AddMapIcon(posicao);
             MostrarPosicao(posicao);
 
+            sleep(DELAY_SEG);
+
             iniciarContador();
         }
 
@@ -281,12 +289,12 @@ namespace AcheoOnibus
 
         private async void btmEu_Click(object sender, RoutedEventArgs e)
         {
-            await mapFindBus.TrySetViewAsync(posicaoAtualUsuario, sldZoom.Value, sldEixoX.Value, sldEixoY.Value, MapAnimationKind.None).AsTask().ConfigureAwait(false);
+            await mapFindBus.TrySetViewAsync(posicaoAtualUsuario, sldZoom.Value, sldEixoX.Value, sldEixoY.Value, MapAnimationKind.None);
         }
 
         private async void btmOnibus_Click(object sender, RoutedEventArgs e)
         {
-            await mapFindBus.TrySetViewAsync(posicao, sldZoom.Value, sldEixoX.Value, sldEixoY.Value, MapAnimationKind.None).AsTask().ConfigureAwait(false);
+            await mapFindBus.TrySetViewAsync(posicao, sldZoom.Value, sldEixoX.Value, sldEixoY.Value, MapAnimationKind.None);
         }
     }
 }
